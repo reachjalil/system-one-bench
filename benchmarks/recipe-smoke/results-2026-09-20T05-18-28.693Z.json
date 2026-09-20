@@ -1,0 +1,820 @@
+{
+  "startedAt": "2026-09-20T05:18:28.693Z",
+  "engineVersion": "0.5.0",
+  "model": "typesafe-ai/jev",
+  "provider": "Vercel AI Gateway",
+  "resolvedModelVersion": "Not exposed by the current engine receipt",
+  "casesSha256": "6600a5c03348ea824c86c0e76965adb46d394c3d724166080bd0290a5a9769d6",
+  "kind": "First-party authored synthetic smoke test, not a held-out benchmark",
+  "booleanDecisionThreshold": 0.5,
+  "uncertaintyThreshold": 0.8,
+  "baseline": "Author labels only; no comparator model or cost comparison",
+  "rows": [
+    {
+      "id": "quiet-reading-palette",
+      "status": 200,
+      "answers": {
+        "palette": {
+          "type": "choice",
+          "choice": "paper",
+          "probabilities": {
+            "neon": 0,
+            "paper": 0.98,
+            "review": 0.02
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 406,
+        "outputTokens": 39,
+        "cached": false,
+        "latencyMs": 450
+      },
+      "checks": [
+        {
+          "question": "palette",
+          "expected": "paper",
+          "actual": "paper",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 484
+    },
+    {
+      "id": "palette-no-fit",
+      "status": 200,
+      "answers": {
+        "palette": {
+          "type": "choice",
+          "choice": "review",
+          "probabilities": {
+            "white": 0,
+            "review": 1,
+            "cream": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 396,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 290
+      },
+      "checks": [
+        {
+          "question": "palette",
+          "expected": "review",
+          "actual": "review",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 295
+    },
+    {
+      "id": "lamp-by-description",
+      "status": 200,
+      "answers": {
+        "item": {
+          "type": "choice",
+          "choice": "small",
+          "probabilities": {
+            "large": 0,
+            "small": 0.76,
+            "review": 0.24
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 416,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 231
+      },
+      "checks": [
+        {
+          "question": "item",
+          "expected": "small",
+          "actual": "small",
+          "correct": true,
+          "needsReview": true
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 235
+    },
+    {
+      "id": "item-missing-attribute",
+      "status": 200,
+      "answers": {
+        "item": {
+          "type": "choice",
+          "choice": "review",
+          "probabilities": {
+            "review": 1,
+            "a": 0,
+            "b": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 401,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 260
+      },
+      "checks": [
+        {
+          "question": "item",
+          "expected": "review",
+          "actual": "review",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 266
+    },
+    {
+      "id": "command-show-sidebar",
+      "status": 200,
+      "answers": {
+        "command": {
+          "type": "choice",
+          "choice": "show",
+          "probabilities": {
+            "zoom": 0,
+            "review": 0.06,
+            "show": 0.94
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 396,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 213
+      },
+      "checks": [
+        {
+          "question": "command",
+          "expected": "show",
+          "actual": "show",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 219
+    },
+    {
+      "id": "command-unavailable",
+      "status": 200,
+      "answers": {
+        "command": {
+          "type": "choice",
+          "choice": "review",
+          "probabilities": {
+            "hide": 0,
+            "review": 1,
+            "zoom": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 390,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 328
+      },
+      "checks": [
+        {
+          "question": "command",
+          "expected": "review",
+          "actual": "review",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 333
+    },
+    {
+      "id": "find-submit-source",
+      "status": 200,
+      "answers": {
+        "source": {
+          "type": "choice",
+          "choice": "handler",
+          "probabilities": {
+            "theme": 0,
+            "handler": 0.94,
+            "review": 0.06
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 408,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 210
+      },
+      "checks": [
+        {
+          "question": "source",
+          "expected": "handler",
+          "actual": "handler",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 214
+    },
+    {
+      "id": "entity-variant",
+      "status": 200,
+      "answers": {
+        "match": {
+          "type": "choice",
+          "choice": "different",
+          "probabilities": {
+            "same": 0,
+            "different": 0.98,
+            "review": 0.02
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 391,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 265
+      },
+      "checks": [
+        {
+          "question": "match",
+          "expected": "different",
+          "actual": "different",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 270
+    },
+    {
+      "id": "entity-identical",
+      "status": 200,
+      "answers": {
+        "match": {
+          "type": "choice",
+          "choice": "same",
+          "probabilities": {
+            "different": 0,
+            "same": 0.99,
+            "review": 0.01
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 407,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 218
+      },
+      "checks": [
+        {
+          "question": "match",
+          "expected": "same",
+          "actual": "same",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 221
+    },
+    {
+      "id": "citation-overclaim",
+      "status": 200,
+      "answers": {
+        "verdict": {
+          "type": "choice",
+          "choice": "contradicted",
+          "probabilities": {
+            "review": 0,
+            "unsupported": 0,
+            "contradicted": 1,
+            "supported": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 398,
+        "outputTokens": 52,
+        "cached": false,
+        "latencyMs": 265
+      },
+      "checks": [
+        {
+          "question": "verdict",
+          "expected": "contradicted",
+          "actual": "contradicted",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 269
+    },
+    {
+      "id": "citation-supported",
+      "status": 200,
+      "answers": {
+        "verdict": {
+          "type": "choice",
+          "choice": "supported",
+          "probabilities": {
+            "unsupported": 0.01,
+            "review": 0,
+            "supported": 0.99,
+            "contradicted": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 402,
+        "outputTokens": 49,
+        "cached": false,
+        "latencyMs": 235
+      },
+      "checks": [
+        {
+          "question": "verdict",
+          "expected": "supported",
+          "actual": "supported",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 239
+    },
+    {
+      "id": "writing-concrete",
+      "status": 200,
+      "answers": {
+        "specific": {
+          "type": "boolean",
+          "probability": 0.96
+        },
+        "vague": {
+          "type": "boolean",
+          "probability": 0.14
+        },
+        "actionable": {
+          "type": "boolean",
+          "probability": 0.93
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 395,
+        "outputTokens": 55,
+        "cached": false,
+        "latencyMs": 224
+      },
+      "checks": [
+        {
+          "question": "specific",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "vague",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "actionable",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 228
+    },
+    {
+      "id": "structural-list",
+      "status": 200,
+      "answers": {
+        "role": {
+          "type": "choice",
+          "choice": "list",
+          "probabilities": {
+            "paragraph": 0,
+            "list": 1,
+            "code": 0,
+            "review": 0,
+            "heading": 0
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 402,
+        "outputTokens": 52,
+        "cached": false,
+        "latencyMs": 232
+      },
+      "checks": [
+        {
+          "question": "role",
+          "expected": "list",
+          "actual": "list",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 235
+    },
+    {
+      "id": "known-fields",
+      "status": 200,
+      "answers": {
+        "window": {
+          "type": "choice",
+          "choice": "month",
+          "probabilities": {
+            "week": 0,
+            "review": 0,
+            "day": 0,
+            "month": 1
+          }
+        },
+        "format": {
+          "type": "choice",
+          "choice": "chart",
+          "probabilities": {
+            "chart": 0.99,
+            "table": 0,
+            "review": 0.01
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 446,
+        "outputTokens": 80,
+        "cached": false,
+        "latencyMs": 211
+      },
+      "checks": [
+        {
+          "question": "window",
+          "expected": "month",
+          "actual": "month",
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "format",
+          "expected": "chart",
+          "actual": "chart",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 215
+    },
+    {
+      "id": "choose-readonly-test",
+      "status": 200,
+      "answers": {
+        "test": {
+          "type": "choice",
+          "choice": "network",
+          "probabilities": {
+            "theme": 0,
+            "review": 0.1,
+            "network": 0.9
+          }
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 419,
+        "outputTokens": 38,
+        "cached": false,
+        "latencyMs": 270
+      },
+      "checks": [
+        {
+          "question": "test",
+          "expected": "network",
+          "actual": "network",
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 273
+    },
+    {
+      "id": "repair-incomplete",
+      "status": 200,
+      "answers": {
+        "recovered": {
+          "type": "boolean",
+          "probability": 0.28
+        },
+        "invariant": {
+          "type": "boolean",
+          "probability": 0.02
+        },
+        "contradicted": {
+          "type": "boolean",
+          "probability": 0.95
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 390,
+        "outputTokens": 60,
+        "cached": false,
+        "latencyMs": 211
+      },
+      "checks": [
+        {
+          "question": "recovered",
+          "expected": true,
+          "actual": false,
+          "correct": false,
+          "needsReview": true
+        },
+        {
+          "question": "invariant",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "contradicted",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": false,
+      "endToEndMs": 215
+    },
+    {
+      "id": "passage-instructions",
+      "status": 200,
+      "answers": {
+        "relevant": {
+          "type": "boolean",
+          "probability": 0.93
+        },
+        "instruction": {
+          "type": "boolean",
+          "probability": 0.97
+        },
+        "conflict": {
+          "type": "boolean",
+          "probability": 0.93
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 394,
+        "outputTokens": 55,
+        "cached": false,
+        "latencyMs": 306
+      },
+      "checks": [
+        {
+          "question": "relevant",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "instruction",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "conflict",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 309
+    },
+    {
+      "id": "ticket-charge",
+      "status": 200,
+      "answers": {
+        "queue": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": {
+            "bug": 0,
+            "access": 0,
+            "billing": 1,
+            "review": 0
+          }
+        },
+        "blocked": {
+          "type": "boolean",
+          "probability": 0.05
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 420,
+        "outputTokens": 62,
+        "cached": false,
+        "latencyMs": 255
+      },
+      "checks": [
+        {
+          "question": "queue",
+          "expected": "billing",
+          "actual": "billing",
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "blocked",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 258
+    },
+    {
+      "id": "paper-wrong-design",
+      "status": 200,
+      "answers": {
+        "topic": {
+          "type": "boolean",
+          "probability": 0.18
+        },
+        "design": {
+          "type": "boolean",
+          "probability": 0.05
+        },
+        "outcome": {
+          "type": "boolean",
+          "probability": 0.04
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 392,
+        "outputTokens": 53,
+        "cached": false,
+        "latencyMs": 230
+      },
+      "checks": [
+        {
+          "question": "design",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        },
+        {
+          "question": "outcome",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 233
+    },
+    {
+      "id": "reports-different",
+      "status": 200,
+      "answers": {
+        "duplicate": {
+          "type": "boolean",
+          "probability": 0.08
+        },
+        "missing": {
+          "type": "boolean",
+          "probability": 0.86
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 365,
+        "outputTokens": 36,
+        "cached": false,
+        "latencyMs": 213
+      },
+      "checks": [
+        {
+          "question": "duplicate",
+          "expected": false,
+          "actual": false,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 216
+    },
+    {
+      "id": "reports-same",
+      "status": 200,
+      "answers": {
+        "duplicate": {
+          "type": "boolean",
+          "probability": 0.94
+        },
+        "missing": {
+          "type": "boolean",
+          "probability": 0.83
+        }
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 378,
+        "outputTokens": 36,
+        "cached": false,
+        "latencyMs": 315
+      },
+      "checks": [
+        {
+          "question": "duplicate",
+          "expected": true,
+          "actual": true,
+          "correct": true,
+          "needsReview": false
+        }
+      ],
+      "correct": true,
+      "endToEndMs": 318
+    }
+  ]
+}

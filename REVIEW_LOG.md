@@ -23,3 +23,9 @@ examples, editorial confidence and planned protocols. X compaction entries expli
 use truncated official oEmbed previews; no full-post claim or benchmark is inferred.
 Color selection uses the betterimage builder report. The NL Palette project is an
 editor command palette and is labeled accordingly.
+
+Ran a separate [21-case recipe smoke test](benchmarks/recipe-smoke/README.md) after
+committing its labels. The first result matched 20 whole cases and 29 individual
+labels out of 30, with one ambiguous recovery judgment. Every attempt is retained.
+This is development verification of the new API recipes, not completion of any
+larger thesis protocol. It changes no evidence confidence rating.

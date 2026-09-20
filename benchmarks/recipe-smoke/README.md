@@ -21,3 +21,27 @@ the current engine does not expose a resolved model revision.
 A passing smoke case only confirms an expected answer to this particular input.
 There is no other-model baseline, complete agent task or measured savings comparison.
 The larger protocols in [the test plan](../../TEST_PLAN.md) remain planned.
+
+## First run, September 20, 2026
+
+The first run matched all author labels in 20 of 21 cases, with 29 of 30 individual
+labels matched. All 21 requests completed, with one provider attempt each and no
+cache hits. Client elapsed time, including the local HTTP route and Gateway round
+trip, had a 239 ms median and 333 ms p95, using nearest-rank quantiles. These times
+exclude an agent's planning and review. Two answers fell below the selected 0.8
+review threshold. No calibrated confidence or dollar savings is established.
+
+The incomplete-repair case asked whether current functionality had recovered while
+a revoked token still authenticated. We labeled current functionality true because
+the new token worked. Jev returned 0.28 for recovery, but correctly rejected the
+invariant and detected the explicit contradiction. The term "recovered" can include
+the security requirement, so this is also a question and label ambiguity. The first
+labels and result remain unchanged. A future evaluation should distinguish successful
+new-token authentication from complete restoration without tuning on this case.
+
+The [cases](cases.json) were committed before execution at
+`97e63f4`. The [question snapshot](recipes.json) records the fixed questions and
+policies used by the engine; caller candidates replace the corresponding sample
+choices. The [complete first result](results-2026-09-20T05-18-28.693Z.json) retains every
+answer, reported token count, attempt and elapsed time. Dataset SHA-256 is recorded
+inside that file. No broader thesis confidence rating changes after this smoke test.
