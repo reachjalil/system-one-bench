@@ -1,0 +1,8 @@
+[
+  {"id":"duplicate-save","goal":"Save the draft settings. Leave the live settings alone.","operation":"click","target":"Draft Save"},
+  {"id":"computed-icon","goal":"Apply the preview palette using the Apply theme control.","operation":"click","target":"Apply theme"},
+  {"id":"required-invalid","goal":"Fill the missing required Project name with Alpha before saving. The calling agent supplies Alpha.","operation":"type","target":"Project name"},
+  {"id":"shadow-control","goal":"Save the current shadow preview, without clearing it.","operation":"click","target":"Save shadow"},
+  {"id":"checked-state","goal":"Enable Team alerts. Email alerts are already enabled and should stay enabled.","operation":"click","target":"Team alerts"},
+  {"id":"visible-loading","goal":"Wait for the preview to finish loading before inspecting it. Do not cancel the load.","operation":"wait","target":null}
+]

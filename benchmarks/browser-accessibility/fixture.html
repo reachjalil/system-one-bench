@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Accessibility decision fixture</title>
+<style>body{font:18px system-ui;padding:30px}button,input,custom-action{display:inline-block;padding:12px;margin:12px}fieldset{display:inline-block;margin:12px}</style>
+<main id="case"></main><script>
+const cases={
+'duplicate-save':'<fieldset><legend>Draft settings</legend><button data-test="Draft Save">Save</button></fieldset><fieldset><legend>Live settings</legend><button data-test="Live Save">Save</button></fieldset>',
+'computed-icon':'<p>Preview palette is ready to apply.</p><custom-action tabindex="0" data-test="Apply theme">★</custom-action><button>Clear preview</button>',
+'required-invalid':'<label>Project name<input data-test="Project name" required aria-invalid="true" aria-describedby="help"></label><p id="help">Enter a project name before saving.</p><button>Save preview</button>',
+'shadow-control':'<shadow-form></shadow-form>',
+'checked-state':'<label><input type="checkbox" checked>Email alerts</label><label><input type="checkbox" data-test="Team alerts">Team alerts</label>',
+'visible-loading':'<p role="status" aria-live="polite">Preview is still loading. Please wait.</p><button>Cancel load</button>'};
+customElements.define('custom-action',class extends HTMLElement{constructor(){super();const a=this.attachInternals();a.role='button';a.ariaLabel='Apply theme';a.ariaDescription='Apply the prepared preview palette';}});
+customElements.define('shadow-form',class extends HTMLElement{constructor(){super();this.attachShadow({mode:'open'}).innerHTML='<p>Current shadow preview is ready.</p><button data-test="Save shadow">Save shadow</button><button>Clear shadow</button>';}});
+document.querySelector('main').innerHTML=cases[new URLSearchParams(location.search).get('case')]||'';
+</script>
