@@ -1,0 +1,261 @@
+[
+  {
+    "id": "routing-ablation",
+    "title": "Model routing: test whether Jev adds value",
+    "status": "reported",
+    "kind": "independent experiment",
+    "affiliation": "TokenTrim; external author; not independently reproduced here.",
+    "reviewed": "2026-09-20",
+    "workload": "Select a model for a user query.",
+    "method": "Author reports offline scoring on 5,835 held-out LLMRouterBench queries across 13 models; answers are precomputed.",
+    "baseline": "Best fixed model and identical retrieval router without Jev.",
+    "finding": "Retrieval routing improved the frontier, but the no-Jev ablation matched it. This does not establish that the Jev difficulty signal caused savings.",
+    "limitations": "Cached downstream answers; no live end-to-end answer latency. Reported cost uses benchmark assumptions.",
+    "implication": "Before adding a model router, compare a fixed default and a no-Jev retrieval policy. Ship a router only if the added signal earns its overhead.",
+    "metrics": [
+      "Hybrid accuracy 62.4%; best fixed 60.3%.",
+      "No-Jev ablation accuracy 62.4%."
+    ],
+    "patterns": [
+      "next-tool",
+      "rubric"
+    ],
+    "sources": [
+      {
+        "label": "Pinned report",
+        "url": "https://github.com/TokenTrim/jev-routing-experiment/blob/bf088479c73220102f8bacd6b69d34021ca34e2e/README.md"
+      }
+    ],
+    "headline": "No-Jev ablation matched the hybrid frontier.",
+    "repo": "TokenTrim/jev-routing-experiment",
+    "revision": "bf088479c73220102f8bacd6b69d34021ca34e2e"
+  },
+  {
+    "id": "tool-sequence",
+    "title": "Choosing tools from real MCP inventories",
+    "status": "reported",
+    "kind": "independent experiment",
+    "affiliation": "BillionsBobby/JevRouter; external project author; not rerun here.",
+    "reviewed": "2026-09-20",
+    "workload": "Predict the first five tool calls for Toolathlon tasks.",
+    "method": "Ten tasks; inventories from nine live MCP servers. Serial and decomposed Jev routing compared with DeepSeek V4.1 Flash.",
+    "baseline": "DeepSeek tool predictions; serial versus decomposed Jev.",
+    "finding": "Serial Jev was faster in this report; decomposition increased position-wise matches but also increased latency.",
+    "limitations": "Only ten tasks and predicted sequences; this is not demonstrated task completion. Provider, prompts and mode affect the tradeoff.",
+    "implication": "Offer a next-tool recommendation over explicit candidates. Do not market a predicted multi-step sequence as a reliable autonomous plan.",
+    "metrics": [
+      "Position-wise hits: serial Jev 38%, decomposed 44%, DeepSeek 24%.",
+      "Per-task latency: 1.58s, 10.6s and 8.65s respectively."
+    ],
+    "patterns": [
+      "next-tool",
+      "intent"
+    ],
+    "sources": [
+      {
+        "label": "Pinned report",
+        "url": "https://github.com/BillionsBobby/JevRouter/blob/3c558a78edf57934790f50480d8f9ac468977853/README.md"
+      },
+      {
+        "label": "Method and per-task discussion",
+        "url": "https://github.com/BillionsBobby/JevRouter/issues/2"
+      }
+    ],
+    "headline": "Better tool prediction can still take longer.",
+    "repo": "BillionsBobby/JevRouter",
+    "revision": "3c558a78edf57934790f50480d8f9ac468977853"
+  },
+  {
+    "id": "hazard-decomposition",
+    "title": "Separate questions for separate hazards",
+    "status": "reported",
+    "kind": "synthetic test",
+    "affiliation": "AnshChoudhary; external project author; not rerun here.",
+    "reviewed": "2026-09-20",
+    "workload": "Flag hazards in proposed agent tool calls before execution.",
+    "method": "600 authored records, 320 held out; full hazard battery compared with a broad dangerousness question.",
+    "baseline": "Single generic hazard question.",
+    "finding": "Decomposed questions sharply reduced false blocks on hard negatives in this corpus. Calibration and latency targets still failed.",
+    "limitations": "Author-designed synthetic attacks are not evidence of adversarial security in production. Approval friction must be measured separately.",
+    "implication": "Use independent, explicit checks as advisory signals. Keep authorization, execution safeguards and human approval outside Jev.",
+    "metrics": [
+      "Hard-negative block rate: full battery 0%; generic question 39.2%.",
+      "Reported ECE 0.156; p95 added latency 595ms."
+    ],
+    "patterns": [
+      "change-scope",
+      "acceptance",
+      "evidence-check"
+    ],
+    "sources": [
+      {
+        "label": "Pinned report",
+        "url": "https://github.com/AnshChoudhary/typesafe-ai-firewall/blob/1b945790797651abedbfbafb9a21c293ba5c837e/report.md"
+      }
+    ],
+    "headline": "Explicit checks helped; calibration and latency limits remain.",
+    "repo": "AnshChoudhary/typesafe-ai-firewall",
+    "revision": "1b945790797651abedbfbafb9a21c293ba5c837e"
+  },
+  {
+    "id": "log-triage",
+    "title": "Log triage: filtering is not automatically saving",
+    "status": "first-party",
+    "kind": "public-dataset study",
+    "affiliation": "Jalil Laaraichi / jevlogs; same maintainer as System One Engine.",
+    "reviewed": "2026-09-20",
+    "workload": "Select log records for deeper analysis while preserving originals.",
+    "method": "2,500 HDFS and 2,500 BGL records; threshold, severity, cache and rule comparisons. Existing results inspected; no new rerun.",
+    "baseline": "Severity-only, keyword and exact-cache policies.",
+    "finding": "The conservative HDFS policy sent nearly everything for analysis. The modeled downstream bill increased rather than decreased. BGL recall was explained by deterministic FATAL protection.",
+    "limitations": "HDFS labels are block-level, not true line-level incident labels. The cost example assumes downstream token counts and prices, not actual billing. Upstream Loghub data has research/academic terms.",
+    "implication": "Expose triage alongside exact reuse and visible bypass rates. Compare simple severity rules first; never sell universal savings or discard original records.",
+    "metrics": [
+      "HDFS anomaly recall 99.33%; only 0.84% routed away from deeper analysis.",
+      "Illustrative downstream cost change: +2.55%.",
+      "HDFS exact-cache hit rate 96.48%."
+    ],
+    "patterns": [
+      "log-triage"
+    ],
+    "sources": [
+      {
+        "label": "Pinned dataset and report",
+        "url": "https://huggingface.co/datasets/reachjalil/jevlogs-log-triage-benchmark/tree/4c80b79c911ea166bddb290d9901f5bc7e03b603"
+      },
+      {
+        "label": "Library",
+        "url": "https://github.com/reachjalil/jevlogs"
+      }
+    ],
+    "headline": "Conservative triage can add cost; reuse may help more."
+  },
+  {
+    "id": "taxonomy-cap",
+    "title": "Navigating beyond a flat choice limit",
+    "status": "first-party",
+    "kind": "synthetic test",
+    "affiliation": "Jalil Laaraichi / jev-tree; same maintainer as System One Engine.",
+    "reviewed": "2026-09-20",
+    "workload": "Classify an incident into one of 320 authored categories.",
+    "method": "180 synthetic cases; authored tree, automatic partitioning, truncated flat choice and keyword baseline. Existing recorded results inspected.",
+    "baseline": "Deterministic keyword extraction and first-255 truncation.",
+    "finding": "Hierarchical selection reached categories excluded by truncation. The deterministic parser also solved every case, so this is evidence about taxonomy coverage, not a need for AI.",
+    "limitations": "Synthetic fields are easy to parse. Accuracy is not evidence of production robustness or calibrated confidence. Three tree steps add calls.",
+    "implication": "Use semantic categories when a flat list is too large. First check whether structured input already identifies the answer without inference.",
+    "metrics": [
+      "Authored tree: 180/180; automatic partition: 179/180.",
+      "Truncation: 90/180; keyword baseline: 180/180 with zero model calls."
+    ],
+    "patterns": [
+      "taxonomy"
+    ],
+    "sources": [
+      {
+        "label": "Pinned dataset",
+        "url": "https://huggingface.co/datasets/reachjalil/jev-tree-choice-cap/tree/6f7a325a301043679946bd2bc83900c17cceee09"
+      },
+      {
+        "label": "Benchmark method",
+        "url": "https://github.com/reachjalil/jev-tree/tree/main/benchmarks"
+      }
+    ],
+    "headline": "Trees avoid truncation; structured data may need no model."
+  },
+  {
+    "id": "vendor-workflows",
+    "title": "Typed evaluation versus chat-model wrappers",
+    "status": "reported",
+    "kind": "vendor benchmark",
+    "affiliation": "TypeSafe AI, the Jev model vendor; not independently reproduced here.",
+    "reviewed": "2026-09-20",
+    "workload": "Bounded decisions inside four application workflows.",
+    "method": "Vendor launch comparison of typed Jev evaluations and chat-model decision wrappers.",
+    "baseline": "Vendor-selected chat-model baselines.",
+    "finding": "The launch report supports evaluating typed decisions as a separate operation. Its headline speed and cost ratios are vendor-specific workload results.",
+    "limitations": "Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent’s total cost or time. Pricing and Gateway promotions change.",
+    "implication": "Batch independent questions over shared evidence. Measure host tool overhead and final outcomes before promising savings.",
+    "metrics": [
+      "Vendor advertises up to 193.6× speed and 444.6× cost improvements in its evaluation; not System One Engine results."
+    ],
+    "patterns": [
+      "acceptance",
+      "context-relevance",
+      "rubric"
+    ],
+    "sources": [
+      {
+        "label": "Vendor report",
+        "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+      },
+      {
+        "label": "Current Gateway model page",
+        "url": "https://vercel.com/ai-gateway/models/jev"
+      }
+    ],
+    "headline": "A reason to test typed decisions, not a savings guarantee."
+  },
+  {
+    "id": "workflow-design",
+    "title": "Define ambiguity before evaluating a workflow",
+    "status": "reference",
+    "kind": "official guidance",
+    "affiliation": "Vercel; platform guidance, not an independent benchmark.",
+    "reviewed": "2026-09-20",
+    "workload": "Classification and routing where outcomes and review behavior can be specified.",
+    "method": "Official examples and design guidance; no qualifying comparative run in this record.",
+    "baseline": "A deterministic rule or direct reasoning in the host should remain a candidate.",
+    "finding": "Clear output choices and an explicit ambiguity policy make an evaluation meaningful.",
+    "limitations": "Documentation examples do not establish a measured accuracy or savings rate.",
+    "implication": "Provide reusable recipes with explicit review paths. Distinguish a prompt design problem from a model failure.",
+    "metrics": [],
+    "patterns": [
+      "clarification",
+      "intent",
+      "attention",
+      "memory-candidate",
+      "freshness"
+    ],
+    "sources": [
+      {
+        "label": "Official guidance",
+        "url": "https://vercel.com/i/when-to-use-jev"
+      }
+    ],
+    "headline": "Specify what uncertain and mixed cases should do."
+  },
+  {
+    "id": "batched-evidence",
+    "title": "Batching two evidence checks",
+    "status": "first-party",
+    "kind": "synthetic test",
+    "affiliation": "System One Bench / Jalil Laaraichi; same maintainer as System One Engine.",
+    "reviewed": "2026-09-20",
+    "workload": "Check whether short tool evidence supports or explicitly contradicts a claim.",
+    "method": "12 authored cases, 24 labels; batch versus two sequential SDK requests; alternating order, no cache or retries. Labels and corpus hash precede the first run. Live Jev via Vercel Gateway.",
+    "baseline": "The same questions in separate sequential requests; no expensive host-model comparison.",
+    "finding": "Batching reduced calls, input tokens and median case latency, with one additional incorrect answer in this small run.",
+    "limitations": "Tiny synthetic diagnostic, not a held-out production benchmark. No host-agent tool overhead, final task success or invoice savings measured. One run is not a stable latency distribution.",
+    "implication": "Batch independent checks when evidence is shared, but evaluate quality as well as request count. Preserve uncertainty and inspect contradictions rather than blindly accepting the cheaper configuration.",
+    "metrics": [
+      "Batch: 23/24 labels correct; 12 calls; 4,113 input tokens; case p50 256ms, p95 535ms.",
+      "Separate: 24/24 correct; 24 calls; 7,530 input tokens; case p50 537ms, p95 685ms.",
+      "Both modes flagged 3/24 answers for review; zero failed requests."
+    ],
+    "patterns": [
+      "acceptance",
+      "evidence-check"
+    ],
+    "sources": [
+      {
+        "label": "Method and reproduction",
+        "url": "https://github.com/reachjalil/system-one-bench/tree/main/benchmarks/agent-decisions"
+      },
+      {
+        "label": "Complete first-run results",
+        "url": "https://github.com/reachjalil/system-one-bench/blob/main/benchmarks/agent-decisions/results-2026-09-20T04-06-31.559Z.json"
+      }
+    ],
+    "headline": "Fewer calls and tokens, with one extra error in this small test."
+  }
+]

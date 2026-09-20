@@ -1,0 +1,14 @@
+[
+ {"id":"test-pass","state":"Claim: all tests passed. Tool evidence: 12 tests passed; 0 failed; process exited 0.","expected":{"supported":true,"contradicted":false}},
+ {"id":"test-fail","state":"Claim: all tests passed. Tool evidence: 11 tests passed; 1 failed; process exited 1.","expected":{"supported":false,"contradicted":true}},
+ {"id":"test-no-evidence","state":"Claim: all tests passed. Tool evidence: test command was started; no completion output is available.","expected":{"supported":false,"contradicted":false}},
+ {"id":"deploy-live","state":"Claim: the new release is serving production. Tool evidence: deployment succeeded; a GET to the production URL returned the new release identifier.","expected":{"supported":true,"contradicted":false}},
+ {"id":"deploy-build-only","state":"Claim: the new release is serving production. Tool evidence: local build succeeded. No deployment or production request was performed.","expected":{"supported":false,"contradicted":false}},
+ {"id":"deploy-old","state":"Claim: the new release is serving production. Tool evidence: deployment failed; the production URL still returns the previous release identifier.","expected":{"supported":false,"contradicted":true}},
+ {"id":"file-saved","state":"Claim: the configuration was saved. Tool evidence: write completed; reading the file back returned the exact requested configuration.","expected":{"supported":true,"contradicted":false}},
+ {"id":"file-denied","state":"Claim: the configuration was saved. Tool evidence: write failed with permission denied; file content remained unchanged.","expected":{"supported":false,"contradicted":true}},
+ {"id":"file-plan","state":"Claim: the configuration was saved. Tool evidence: the agent described a plan to save it; no write was attempted.","expected":{"supported":false,"contradicted":false}},
+ {"id":"auth-revoked","state":"Claim: revoking the key prevents new requests. Tool evidence: before revocation the key returned 200; after revocation the same key returned 401.","expected":{"supported":true,"contradicted":false}},
+ {"id":"auth-still-works","state":"Claim: revoking the key prevents new requests. Tool evidence: after confirmed revocation, a fresh request with the same key still returned 200.","expected":{"supported":false,"contradicted":true}},
+ {"id":"auth-ui-only","state":"Claim: revoking the key prevents new requests. Tool evidence: the UI displayed a revoked badge; no subsequent request was tested.","expected":{"supported":false,"contradicted":false}}
+]

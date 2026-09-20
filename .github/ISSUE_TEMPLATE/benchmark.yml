@@ -1,0 +1,27 @@
+name: Benchmark submission
+description: Submit a primary benchmark, reproduction or useful negative result
+title: "[Evidence] "
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Original report, code or dataset URL
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: Workload, sample size, model and baseline
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results and limitations
+      description: Include failures, latency/cost definitions, and whether you reproduced the result.
+    validations:
+      required: true
+  - type: textarea
+    id: affiliation
+    attributes:
+      label: Affiliation and potential conflicts

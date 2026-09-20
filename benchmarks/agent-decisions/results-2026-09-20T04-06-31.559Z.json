@@ -1,0 +1,860 @@
+{
+  "at": "2026-09-20T04:06:31.558Z",
+  "model": "typesafe-ai/jev",
+  "provider": "Vercel AI Gateway",
+  "node": "v26.4.0",
+  "corpusSha256": "c02ce0b1ed2ddeb02c16b5584d33765577dc1a9b96b861edf24059b94c090e20",
+  "questions": {
+    "supported": {
+      "type": "boolean",
+      "instructions": "Is the entire claim established by the supplied tool evidence? Plans and missing observations do not count as evidence."
+    },
+    "contradicted": {
+      "type": "boolean",
+      "instructions": "Does the supplied tool evidence explicitly show the claim is false? Mere absence of confirming evidence is not an explicit contradiction."
+    }
+  },
+  "method": "12 authored evidence cases, 2 independent boolean questions; one batched request versus two sequential requests; alternating order; no retries or cache; SDK wall time. Labels written before first run. Synthetic diagnostic, not held-out production evaluation or host-agent savings measurement.",
+  "summary": {
+    "batch": {
+      "correct": 23,
+      "total": 24,
+      "review": 3,
+      "calls": 12,
+      "failedCalls": 0,
+      "inputTokens": 4113,
+      "unreportedUsage": 0,
+      "p50Ms": 256,
+      "p95Ms": 535
+    },
+    "separate": {
+      "correct": 24,
+      "total": 24,
+      "review": 3,
+      "calls": 24,
+      "failedCalls": 0,
+      "inputTokens": 7530,
+      "unreportedUsage": 0,
+      "p50Ms": 537,
+      "p95Ms": 685
+    }
+  },
+  "observations": [
+    {
+      "id": "test-pass",
+      "mode": "batch",
+      "elapsedMs": 535,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 535,
+          "inputTokens": 341,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.84,
+          "actual": true,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "test-pass",
+      "mode": "separate",
+      "elapsedMs": 519,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 277,
+          "inputTokens": 311,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 242,
+          "inputTokens": 313,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.86,
+          "actual": true,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "test-fail",
+      "mode": "separate",
+      "elapsedMs": 516,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 239,
+          "inputTokens": 311,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 277,
+          "inputTokens": 313,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.01,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.95,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "test-fail",
+      "mode": "batch",
+      "elapsedMs": 239,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 239,
+          "inputTokens": 341,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.01,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.96,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "test-no-evidence",
+      "mode": "batch",
+      "elapsedMs": 255,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 255,
+          "inputTokens": 337,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.05,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "test-no-evidence",
+      "mode": "separate",
+      "elapsedMs": 498,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 240,
+          "inputTokens": 307,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 257,
+          "inputTokens": 309,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.05,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-live",
+      "mode": "separate",
+      "elapsedMs": 565,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 262,
+          "inputTokens": 314,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 304,
+          "inputTokens": 316,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.76,
+          "actual": true,
+          "correct": true,
+          "review": true
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-live",
+      "mode": "batch",
+      "elapsedMs": 466,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 466,
+          "inputTokens": 344,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.76,
+          "actual": true,
+          "correct": true,
+          "review": true
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-build-only",
+      "mode": "batch",
+      "elapsedMs": 256,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 256,
+          "inputTokens": 341,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.19,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-build-only",
+      "mode": "separate",
+      "elapsedMs": 559,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 293,
+          "inputTokens": 311,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 266,
+          "inputTokens": 313,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.18,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-old",
+      "mode": "separate",
+      "elapsedMs": 666,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 401,
+          "inputTokens": 312,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 265,
+          "inputTokens": 314,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.84,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "deploy-old",
+      "mode": "batch",
+      "elapsedMs": 269,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 269,
+          "inputTokens": 342,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.85,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "file-saved",
+      "mode": "batch",
+      "elapsedMs": 279,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 279,
+          "inputTokens": 340,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.85,
+          "actual": true,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "file-saved",
+      "mode": "separate",
+      "elapsedMs": 573,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 235,
+          "inputTokens": 310,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 338,
+          "inputTokens": 312,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.86,
+          "actual": true,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "file-denied",
+      "mode": "separate",
+      "elapsedMs": 537,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 317,
+          "inputTokens": 308,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 221,
+          "inputTokens": 310,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.92,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "file-denied",
+      "mode": "batch",
+      "elapsedMs": 245,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 245,
+          "inputTokens": 338,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.92,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "file-plan",
+      "mode": "batch",
+      "elapsedMs": 217,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 217,
+          "inputTokens": 341,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.26,
+          "actual": false,
+          "correct": true,
+          "review": true
+        }
+      ]
+    },
+    {
+      "id": "file-plan",
+      "mode": "separate",
+      "elapsedMs": 536,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 220,
+          "inputTokens": 311,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 315,
+          "inputTokens": 313,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.02,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.24,
+          "actual": false,
+          "correct": true,
+          "review": true
+        }
+      ]
+    },
+    {
+      "id": "auth-revoked",
+      "mode": "separate",
+      "elapsedMs": 685,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 273,
+          "inputTokens": 325,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 412,
+          "inputTokens": 327,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.52,
+          "actual": true,
+          "correct": true,
+          "review": true
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.06,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "auth-revoked",
+      "mode": "batch",
+      "elapsedMs": 237,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 237,
+          "inputTokens": 355,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": true,
+          "probability": 0.45,
+          "actual": false,
+          "correct": false,
+          "review": true
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.06,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "auth-still-works",
+      "mode": "batch",
+      "elapsedMs": 265,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 265,
+          "inputTokens": 350,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.85,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "auth-still-works",
+      "mode": "separate",
+      "elapsedMs": 618,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 412,
+          "inputTokens": 320,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 207,
+          "inputTokens": 322,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.03,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": true,
+          "probability": 0.84,
+          "actual": true,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "auth-ui-only",
+      "mode": "separate",
+      "elapsedMs": 462,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 247,
+          "inputTokens": 313,
+          "outputTokens": 20
+        },
+        {
+          "ok": true,
+          "latencyMs": 216,
+          "inputTokens": 315,
+          "outputTokens": 23
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.07,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.05,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    },
+    {
+      "id": "auth-ui-only",
+      "mode": "batch",
+      "elapsedMs": 263,
+      "receipts": [
+        {
+          "ok": true,
+          "latencyMs": 263,
+          "inputTokens": 343,
+          "outputTokens": 39
+        }
+      ],
+      "scored": [
+        {
+          "key": "supported",
+          "expected": false,
+          "probability": 0.07,
+          "actual": false,
+          "correct": true,
+          "review": false
+        },
+        {
+          "key": "contradicted",
+          "expected": false,
+          "probability": 0.05,
+          "actual": false,
+          "correct": true,
+          "review": false
+        }
+      ]
+    }
+  ]
+}
