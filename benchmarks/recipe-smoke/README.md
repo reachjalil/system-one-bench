@@ -11,7 +11,9 @@ Run with an installed System One 0.5+ engine and a private connection scoped to 
 SYSONE_CONNECTION=/private/path/agent.json node benchmarks/recipe-smoke/run.mjs
 ```
 
-This makes 21 billable requests, with no retries. The script records the dataset hash,
+The script checks the engine version and verifies the saved question snapshot before
+any inference. A changed recipe needs a new experiment revision. A valid run makes
+21 billable requests, with no retries. The script records the dataset hash,
 all attempts, answers, usage and network-inclusive elapsed time. It never records the
 connection token. Keep the first result unchanged. Boolean labels use a 0.5 threshold;
 probability below 0.8 for the selected answer is separately flagged for review.
