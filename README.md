@@ -42,7 +42,7 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 
 ## Evidence library
 
-19 reviewed records. Scores from different tasks are not one leaderboard.
+20 reviewed records. Scores from different tasks are not one leaderboard.
 
 | Scenario | Evidence | Finding |
 | --- | --- | --- |
@@ -65,6 +65,7 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 | [Select an editor command from an informal request](records/command-palette.md) | reported · builder experiment | An authored demo maps descriptions to commands better than its name matcher. |
 | [Choose diagnostic tests and review repair evidence](records/sre-decision-support.md) | reported · application experiment | More attempts passed in one small study; some incidents regressed. |
 | [TypeSafe examples for decisions over supplied text](records/official-cookbooks.md) | reference · official examples | Official examples show how to frame the question; each adaptation needs testing. |
+| [Parable dialogue advice chose silence in every first-run case](records/parable-dialogue.md) | first-party · synthetic test | Conservative silence is not evidence of better dialogue. |
 
 ## Practical guides
 

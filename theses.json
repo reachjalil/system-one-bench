@@ -493,10 +493,10 @@
     "title": "Choose a recorded response or silence",
     "claim": "With Jev, an application can recommend a prerecorded reaction from the currently eligible cues.",
     "example": {
-      "situation": "A player returns to a room after hearing its introduction.",
-      "input": "The game removes completed cues and supplies current facts, timing and remaining recordings.",
-      "result": "Jev recommends a cue or silence. The game rejects stale advice and owns playback.",
-      "label": "Illustrative example, not a recorded result."
+      "situation": "A player notices a window while an optional waiting remark is queued.",
+      "input": "The game supplies equally prioritized eligible recordings, the real trigger for each and recently completed speech.",
+      "result": "Jev recommends at most one cue or silence. The game rejects changed contexts and owns playback.",
+      "label": "Illustrative integration example. The measured first-run choices are documented separately."
     },
     "value": {
       "level": "medium",
@@ -504,10 +504,11 @@
     },
     "confidence": {
       "level": "low",
-      "reason": "The optional game integration exists, but no independent playthrough study establishes a better experience."
+      "reason": "The optional game integration exists. Its first eight-case diagnostic chose silence throughout; a randomized listening comparison and positive-selection evidence are still missing."
     },
     "evidence": [
-      "workflow-design"
+      "workflow-design",
+      "parable-dialogue"
     ],
     "patterns": [
       "narrator"
@@ -518,7 +519,8 @@
       "dataset": "20 scripted playthrough paths plus human review, covering return visits, waiting, interruptions and scene changes.",
       "baselines": [
         "Current deterministic director",
-        "Optional Jev advice"
+        "Optional Jev advice",
+        "Always silence for optional remarks"
       ],
       "metrics": [
         "Repeated lines",

@@ -6,13 +6,13 @@ Reviewed 2026-09-20. This is a bounded capability thesis, not a promise of gener
 
 ## A human example
 
-A player returns to a room after hearing its introduction.
+A player notices a window while an optional waiting remark is queued.
 
-The game removes completed cues and supplies current facts, timing and remaining recordings.
+The game supplies equally prioritized eligible recordings, the real trigger for each and recently completed speech.
 
-Jev recommends a cue or silence. The game rejects stale advice and owns playback.
+Jev recommends at most one cue or silence. The game rejects changed contexts and owns playback.
 
-Illustrative example, not a recorded result.
+Illustrative integration example. The measured first-run choices are documented separately.
 
 ## Potential value
 
@@ -20,13 +20,14 @@ medium. Could improve the timing and variety of authored reactions without gener
 
 ## Evidence confidence
 
-low. The optional game integration exists, but no independent playthrough study establishes a better experience.
+low. The optional game integration exists. Its first eight-case diagnostic chose silence throughout; a randomized listening comparison and positive-selection evidence are still missing.
 
 These are editorial ratings. [How we assign them](../METHODOLOGY.md#value-and-confidence).
 
 ## Evidence, including disagreement
 
 - [Define ambiguity before evaluating a workflow](../records/workflow-design.md). reference. Specify what uncertain and mixed cases should do.
+- [Parable dialogue advice chose silence in every first-run case](../records/parable-dialogue.md). first-party. Conservative silence is not evidence of better dialogue.
 
 ## Test plan
 
@@ -38,6 +39,7 @@ Compare against:
 
 - Current deterministic director
 - Optional Jev advice
+- Always silence for optional remarks
 
 Measure:
 

@@ -29,3 +29,11 @@ committing its labels. The first result matched 20 whole cases and 29 individual
 labels out of 30, with one ambiguous recovery judgment. Every attempt is retained.
 This is development verification of the new API recipes, not completion of any
 larger thesis protocol. It changes no evidence confidence rating.
+
+## 2026-09-20: Parable recorded dialogue
+
+Added the first eight-case authored diagnostic and every result. Four explicit
+silence checks matched; all four editorial cases also returned silence. No listening
+quality label was assigned to those choices. Published receipts omit private cue
+text and facts, with that reproduction limit stated in the finding. The dialogue
+thesis stays low confidence and its larger listening protocol remains planned.
