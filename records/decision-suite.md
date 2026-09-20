@@ -4,7 +4,11 @@ reported · public-dataset and synthetic study · reviewed 2026-09-20
 
 Omar Mujahid states no affiliation with TypeSafe. We reviewed the report and did not rerun it.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Classification, passage ranking, extraction by selection and short reasoning questions.
 

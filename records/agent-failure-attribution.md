@@ -4,7 +4,11 @@ reported · public-dataset study · reviewed 2026-09-20
 
 TokenTrim; external author. We reviewed the report and did not rerun it.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Identify the responsible agent, step and error category in a failed run.
 

@@ -1,6 +1,6 @@
 # System One Bench
 
-Public evidence catalog, maintained alongside System One Engine but independent of
+Public capability reference and evidence catalog, maintained alongside System One Engine but independent of
 its private application source. Do not publish secrets, private app code or upstream
 datasets. Code and original summaries are MIT; linked research retains its own terms.
 
@@ -10,7 +10,9 @@ Reported is not reproduced. Synthetic and production observations stay distinct.
 Do not call model probabilities calibrated without calibration evidence. Preserve
 negative findings. Never infer end-to-end task success from isolated tool prediction.
 
-Edit catalog.json for evidence and guides.json for practical guides. Generated README,
+Edit theses.json for value-first capabilities, catalog.json for evidence and
+guides.json for practical guides. Community anecdotes are eligible and must be labeled.
+Every thesis needs a human example, value reason, evidence confidence and test plan. Generated README,
 records and guides come from scripts/build.mjs. Follow WRITING.md for public copy.
 Run `npm test` then `npm run build` to regenerate the index and
 individual records. Live runs are separate, explicit and billable; retain all cases,

@@ -16,3 +16,10 @@ timing and the small number of leads with non-overlapping intervals.
 Added five practical guides, metric definitions and an updated feature map. The guides
 use current System One contracts and identify what needs a new test. No new paid
 inference ran in this editorial expansion. The original batching result is unchanged.
+
+Expanded the scope to capability theses, firsthand Reddit accounts, X previews,
+builder integrations and official cookbooks. Added twelve value-first theses with
+examples, editorial confidence and planned protocols. X compaction entries explicitly
+use truncated official oEmbed previews; no full-post claim or benchmark is inferred.
+Color selection uses the betterimage builder report. The NL Palette project is an
+editor command palette and is labeled accordingly.

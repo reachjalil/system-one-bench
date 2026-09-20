@@ -4,7 +4,11 @@ first-party · synthetic test · reviewed 2026-09-20
 
 System One Bench / Jalil Laaraichi; same maintainer as System One Engine.
 
-## What was tested
+## Evidence confidence
+
+low. This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow.
+
+## What was observed
 
 Check whether short tool evidence supports or explicitly contradicts a claim.
 

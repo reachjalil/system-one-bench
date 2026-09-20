@@ -4,7 +4,11 @@ reference · official guidance · reviewed 2026-09-20
 
 Vercel; platform guidance, not an independent benchmark.
 
-## What was tested
+## Evidence confidence
+
+low. This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow.
+
+## What was observed
 
 Classification and routing where outcomes and review behavior can be specified.
 

@@ -1,0 +1,534 @@
+[
+  {
+    "id": "palette-choice",
+    "title": "Choose a palette that fits a brief",
+    "claim": "With Jev, an agent can recommend one of your described color palettes for a design brief.",
+    "example": {
+      "situation": "A creator asks for a calm, readable workspace with one restrained accent.",
+      "input": "The agent supplies three approved palettes with names, hex values and plain-language descriptions.",
+      "result": "Jev returns a palette ID or review. The app renders a preview and checks contrast in code.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Useful when a person already has approved designs and wants a relevant starting point. It does not create a palette or judge an unseen image."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "A builder documents design and palette selection, but no blinded preference comparison is available."
+    },
+    "evidence": [
+      "design-selection"
+    ],
+    "patterns": [
+      "palette-match"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "40 original briefs with three to eight approved palettes, including conflicting preferences and no suitable option.",
+      "baselines": [
+        "Fixed default",
+        "Keyword matching",
+        "Direct agent selection"
+      ],
+      "metrics": [
+        "Blind human preference",
+        "No-match recognition",
+        "Total time and calls",
+        "Deterministic contrast failures"
+      ],
+      "decision": "Keep as an optional recommendation only if blind reviewers prefer it to the default without increasing contrast failures.",
+      "report": "findings/palette-choice/README.md"
+    }
+  },
+  {
+    "id": "item-selection",
+    "title": "Find the item described by the user",
+    "claim": "With Jev, an agent can select a supplied item whose description fits a request.",
+    "example": {
+      "situation": "A user needs a compact desk lamp with warm light and no subscription-dependent controls.",
+      "input": "The app filters availability and exact constraints, then supplies IDs and descriptions for eligible items.",
+      "result": "Jev chooses an item ID or no match. The agent checks the listed facts before recommending it.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "high",
+      "reason": "This selection pattern can serve asset libraries, templates, product catalogs and saved tools. One reusable contract covers several frequent tasks."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "The decision shape appears in demos and official examples. We have no representative item-selection study for the Engine."
+    },
+    "evidence": [
+      "design-selection",
+      "official-cookbooks",
+      "community-router"
+    ],
+    "patterns": [
+      "item-match",
+      "semantic-search"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "60 authored requests over fixed catalogs, including similar descriptions, missing facts and no-match cases.",
+      "baselines": [
+        "Exact filters and keyword ranking",
+        "Direct agent selection"
+      ],
+      "metrics": [
+        "Human-labeled acceptable set",
+        "Unsupported attribute claims",
+        "No-match recall",
+        "Total task cost"
+      ],
+      "decision": "Require no invented attributes and at least the baseline acceptable-choice rate before making it a default.",
+      "report": "findings/item-selection/README.md"
+    }
+  },
+  {
+    "id": "context-selection",
+    "title": "Give an agent a shorter reading list",
+    "claim": "With Jev, an agent can rank supplied passages by their relevance to its task.",
+    "example": {
+      "situation": "Repository search returns several files for a duplicate-submission bug.",
+      "input": "The agent supplies the bug description and candidate snippets with stable source IDs.",
+      "result": "Jev rates relevance. The agent reads the shortlist first and can retrieve every omitted snippet.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "high",
+      "reason": "Repeated large tool results can consume a substantial share of a coding conversation. Better ordering could reduce unnecessary reading."
+    },
+    "confidence": {
+      "level": "moderate",
+      "reason": "Two independent studies support testing passage ranking. They do not establish final coding-task quality or cost savings."
+    },
+    "evidence": [
+      "passage-reranking",
+      "decision-suite"
+    ],
+    "patterns": [
+      "context-relevance",
+      "semantic-search"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "50 debugging or research tasks with labeled relevant passages and counterevidence; keep a fresh evaluation split.",
+      "baselines": [
+        "Original retrieval order",
+        "Deduplication only",
+        "Direct agent selection"
+      ],
+      "metrics": [
+        "Final answer quality",
+        "Relevant evidence recall",
+        "Host tokens",
+        "Cache writes",
+        "Full task time"
+      ],
+      "decision": "Adopt only if final answer quality is no worse within a prespecified tolerance and complete task cost or time improves.",
+      "report": "findings/context-selection/README.md"
+    }
+  },
+  {
+    "id": "claim-checking",
+    "title": "Catch a claim the evidence does not support",
+    "claim": "With Jev, an agent can check a specific claim against a supplied tool result or passage.",
+    "example": {
+      "situation": "An agent says a release is live, but the output only confirms a successful build.",
+      "input": "The caller supplies the exact claim and current build and deployment evidence.",
+      "result": "Jev returns separate support and contradiction signals. The agent checks missing evidence before stating success.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "high",
+      "reason": "A short check can catch premature completion claims in recurring agent workflows."
+    },
+    "confidence": {
+      "level": "moderate",
+      "reason": "Our small diagnostic and a controlled SRE study support testing the pattern. Both expose errors; neither establishes general reliability."
+    },
+    "evidence": [
+      "batched-evidence",
+      "sre-decision-support",
+      "phishing-signals"
+    ],
+    "patterns": [
+      "evidence-check",
+      "citation-check",
+      "repair-check"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "60 pre-labeled claims covering stale outputs, partial completion, missing evidence and explicit contradictions.",
+      "baselines": [
+        "Parse structured status fields",
+        "Direct agent review",
+        "Separate Jev questions"
+      ],
+      "metrics": [
+        "False confirmations",
+        "Review rate",
+        "Final response accuracy",
+        "Additional latency"
+      ],
+      "decision": "Do not default to automatic acceptance. A useful adviser must reduce false confirmations without hiding uncertain cases.",
+      "report": "findings/claim-checking/README.md"
+    }
+  },
+  {
+    "id": "tool-selection",
+    "title": "Choose a tool from its description",
+    "claim": "With Jev, an agent can recommend the next tool from the currently available list.",
+    "example": {
+      "situation": "The user says to hide the left panel, but the command is named Toggle sidebar.",
+      "input": "The caller supplies available command IDs, their descriptions and the current interface state.",
+      "result": "Jev selects the command ID. The application checks permissions and asks for any required confirmation.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Useful for natural-language command menus and overlapping tools. It adds little when a rule or explicit user instruction already chooses the tool."
+    },
+    "confidence": {
+      "level": "moderate",
+      "reason": "A small command demo and tool prediction study report useful selections. End-to-end task success is still uncertain."
+    },
+    "evidence": [
+      "command-palette",
+      "tool-sequence",
+      "community-router"
+    ],
+    "patterns": [
+      "next-tool",
+      "command-match"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "50 user phrasings over fixed tool inventories, including unavailable actions, ambiguous requests and no suitable tool.",
+      "baselines": [
+        "Command-name matching",
+        "Direct agent selection"
+      ],
+      "metrics": [
+        "Correct next action",
+        "Completed tasks",
+        "Extra host turns",
+        "Unnecessary calls"
+      ],
+      "decision": "Require at least baseline task completion and a measured reduction in total time or host work.",
+      "report": "findings/tool-selection/README.md"
+    }
+  },
+  {
+    "id": "history-selection",
+    "title": "Keep useful parts of a long agent session",
+    "claim": "With Jev, an agent can propose which old tool records to retain for the next task step.",
+    "example": {
+      "situation": "A long debugging session contains repeated file reads alongside one failed attempt that must not be forgotten.",
+      "input": "The caller supplies bounded records and the current goal while preserving the original session.",
+      "result": "Jev recommends keep or review. The agent can recover all records and retains instructions through deterministic rules.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "high",
+      "reason": "Context pressure is common for frequent coding-agent users. A reliable selector could make long tasks easier to continue."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "Firsthand Reddit enthusiasm and conflicting X previews establish interest, not successful compaction or lower total cost."
+    },
+    "evidence": [
+      "community-compaction",
+      "x-compaction-discussion",
+      "routing-ablation"
+    ],
+    "patterns": [
+      "memory-candidate"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "20 consented or purpose-authored long sessions, each with later questions about decisions, constraints and failed attempts.",
+      "baselines": [
+        "Existing agent compaction",
+        "Deterministic deduplication",
+        "No selection"
+      ],
+      "metrics": [
+        "Later task success",
+        "Lost constraints",
+        "Repeated failed actions",
+        "Cache rewrite cost",
+        "Recovery reads"
+      ],
+      "decision": "Do not automate destructive history edits. Retain the experiment only if task continuity matches the baseline and total cost or time improves.",
+      "report": "findings/history-selection/README.md"
+    }
+  },
+  {
+    "id": "diagnostic-triage",
+    "title": "Choose a useful diagnostic check",
+    "claim": "With Jev, an agent can rank proposed tests against current failure evidence.",
+    "example": {
+      "situation": "A service is unreachable even though its processes look healthy.",
+      "input": "The agent proposes candidate causes and read-only tests, with a current state snapshot.",
+      "result": "Jev recommends a test or review. The agent runs the test, updates its hypothesis and verifies repair invariants.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "high",
+      "reason": "Repeated incident and debugging work contains many choices about which evidence to collect next."
+    },
+    "confidence": {
+      "level": "moderate",
+      "reason": "The SRE study measured more passing attempts overall, with regressions. Trace attribution also showed low joint diagnosis accuracy."
+    },
+    "evidence": [
+      "sre-decision-support",
+      "agent-failure-attribution"
+    ],
+    "patterns": [
+      "diagnostic-test",
+      "repair-check",
+      "tool-result"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "30 reproducible local failures with known causes, misleading logs and cases where the correct hypothesis is omitted.",
+      "baselines": [
+        "Direct agent investigation",
+        "Fixed diagnostic checklist"
+      ],
+      "metrics": [
+        "Successful repairs",
+        "Diagnostic calls",
+        "Time to a supported cause",
+        "Durable repair tests"
+      ],
+      "decision": "Require better task outcomes or fewer diagnostic calls without more incorrect repairs. Report omitted-hypothesis failures separately.",
+      "report": "findings/diagnostic-triage/README.md"
+    }
+  },
+  {
+    "id": "entity-matching",
+    "title": "Flag records that might describe the same item",
+    "claim": "With Jev, an agent can compare two descriptions and recommend match, different or review.",
+    "example": {
+      "situation": "Two catalogs list the same lamp under different names, but a second pair differs by voltage.",
+      "input": "The caller supplies IDs and relevant attributes for one pair.",
+      "result": "Jev gives a match recommendation. The app checks exact identifiers and preserves conflicting attributes before any merge.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Could reduce manual review when records use inconsistent names. False merges make review important."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "TypeSafe has a worked alignment example. We have not reproduced it or evaluated our generic recipe."
+    },
+    "evidence": [
+      "official-cookbooks"
+    ],
+    "patterns": [
+      "entity-match"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "100 record pairs with human labels, near-duplicate variants and missing identifiers.",
+      "baselines": [
+        "Exact identifiers",
+        "Normalized string similarity"
+      ],
+      "metrics": [
+        "False merges",
+        "Missed matches",
+        "Review volume",
+        "Cost per resolved pair"
+      ],
+      "decision": "Require no increase in false merges over the chosen baseline. Keep uncertain pairs separate.",
+      "report": "findings/entity-matching/README.md"
+    }
+  },
+  {
+    "id": "writing-checks",
+    "title": "Check a draft against named writing rules",
+    "claim": "With Jev, an agent can flag specific writing issues before revising the text.",
+    "example": {
+      "situation": "A product description uses vague claims and never says what the app does.",
+      "input": "The caller supplies the draft and separate rules for clarity, specificity and actionability.",
+      "result": "Jev returns advisory checks. The writing agent revises the draft and a reader reviews the result.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Repeated editorial checks may be useful when a team has explicit rules, including the Unslop rules used in this project."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "Official guidance proposes semantic linting. We have no blinded study of these writing checks."
+    },
+    "evidence": [
+      "official-cookbooks",
+      "workflow-design"
+    ],
+    "patterns": [
+      "writing-check",
+      "text-labels"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "40 original paragraphs with blind human labels per rule, including intentional quotations and technical prose.",
+      "baselines": [
+        "Deterministic style checks",
+        "Direct agent review"
+      ],
+      "metrics": [
+        "Agreement per rule",
+        "Unnecessary revisions",
+        "Blind preference after editing",
+        "Time"
+      ],
+      "decision": "Keep only rules with useful agreement and low false-positive rates. Do not combine them into an unexplained writing score.",
+      "report": "findings/writing-checks/README.md"
+    }
+  },
+  {
+    "id": "taxonomy-selection",
+    "title": "Choose a category in a large catalog",
+    "claim": "With Jev, an agent can navigate a described category tree to select a known label.",
+    "example": {
+      "situation": "An incident needs one of hundreds of service and issue categories.",
+      "input": "The caller supplies a meaningful hierarchy, a question and the incident description.",
+      "result": "Jev selects a path within a call budget or requests review.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Useful when categories are semantic and the input does not already contain a usable ID."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "The current 320-category experiment is synthetic, and a deterministic parser solved every case."
+    },
+    "evidence": [
+      "taxonomy-cap"
+    ],
+    "patterns": [
+      "taxonomy"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "60 natural descriptions over a fixed hierarchy, with ambiguous siblings and no category fit.",
+      "baselines": [
+        "Structured parser",
+        "Keyword rules",
+        "Flat selection where it fits"
+      ],
+      "metrics": [
+        "Correct leaf",
+        "Review rate",
+        "Calls per case",
+        "Latency"
+      ],
+      "decision": "Keep the hierarchy only if it beats the parser or rules on natural descriptions within the same call budget.",
+      "report": "findings/taxonomy-selection/README.md"
+    }
+  },
+  {
+    "id": "log-selection",
+    "title": "Prioritize logs for deeper analysis",
+    "claim": "With Jev, an agent can suggest which supplied log records deserve closer inspection.",
+    "example": {
+      "situation": "A diagnostic bundle contains repeated routine events and one unusual warning.",
+      "input": "The caller marks protected records and supplies IDs, severities and bodies.",
+      "result": "The service advises on inspection priority while the caller retains the full archive.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "low",
+      "reason": "May help some noisy workloads, but our conservative study added cost and simple severity protection explained an apparent win."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "The available first-party study does not demonstrate net savings."
+    },
+    "evidence": [
+      "log-triage"
+    ],
+    "patterns": [
+      "log-triage"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "50 incident bundles with incident-level labels, repeated records and relevant low-severity clues.",
+      "baselines": [
+        "Severity rules",
+        "Exact reuse",
+        "Read all records"
+      ],
+      "metrics": [
+        "Incident recall",
+        "Analysis volume",
+        "Actual downstream cost",
+        "Missed clues"
+      ],
+      "decision": "Reject any policy that hides a critical clue. Require demonstrated downstream savings before selling it as a cost feature.",
+      "report": "findings/log-selection/README.md"
+    }
+  },
+  {
+    "id": "dialogue-selection",
+    "title": "Choose a recorded response or silence",
+    "claim": "With Jev, an application can recommend a prerecorded reaction from the currently eligible cues.",
+    "example": {
+      "situation": "A player returns to a room after hearing its introduction.",
+      "input": "The game removes completed cues and supplies current facts, timing and remaining recordings.",
+      "result": "Jev recommends a cue or silence. The game rejects stale advice and owns playback.",
+      "label": "Illustrative example, not a recorded result."
+    },
+    "value": {
+      "level": "medium",
+      "reason": "Could improve the timing and variety of authored reactions without generating new dialogue."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "The optional game integration exists, but no independent playthrough study establishes a better experience."
+    },
+    "evidence": [
+      "workflow-design"
+    ],
+    "patterns": [
+      "narrator"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "20 scripted playthrough paths plus human review, covering return visits, waiting, interruptions and scene changes.",
+      "baselines": [
+        "Current deterministic director",
+        "Optional Jev advice"
+      ],
+      "metrics": [
+        "Repeated lines",
+        "Interruptions",
+        "Stale recommendations rejected",
+        "Player preference",
+        "Added delays"
+      ],
+      "decision": "Keep narration optional. Require no repeat or stale-playback regression and a clear preference in reviewed playthroughs.",
+      "report": "findings/dialogue-selection/README.md"
+    }
+  }
+]

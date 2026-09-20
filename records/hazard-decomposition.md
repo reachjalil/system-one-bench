@@ -4,7 +4,11 @@ reported · synthetic test · reviewed 2026-09-20
 
 AnshChoudhary; external project author; not rerun here.
 
-## What was tested
+## Evidence confidence
+
+low. This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow.
+
+## What was observed
 
 Flag hazards in proposed agent tool calls before execution.
 

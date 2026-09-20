@@ -4,7 +4,11 @@ reported · vendor benchmark · reviewed 2026-09-20
 
 TypeSafe AI, the Jev model vendor; not independently reproduced here.
 
-## What was tested
+## Evidence confidence
+
+low. This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow.
+
+## What was observed
 
 Bounded decisions inside four application workflows.
 

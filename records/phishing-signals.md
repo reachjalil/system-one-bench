@@ -4,7 +4,11 @@ reported · synthetic-data study · reviewed 2026-09-20
 
 anisselbd; external author. We reviewed the report and did not rerun it.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Classify phishing emails and extract five risk signals.
 

@@ -28,7 +28,11 @@
     ],
     "headline": "No-Jev ablation matched the hybrid result.",
     "repo": "TokenTrim/jev-routing-experiment",
-    "revision": "bf088479c73220102f8bacd6b69d34021ca34e2e"
+    "revision": "bf088479c73220102f8bacd6b69d34021ca34e2e",
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "tool-sequence",
@@ -63,7 +67,11 @@
     ],
     "headline": "Better tool prediction can still take longer.",
     "repo": "BillionsBobby/JevRouter",
-    "revision": "3c558a78edf57934790f50480d8f9ac468977853"
+    "revision": "3c558a78edf57934790f50480d8f9ac468977853",
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "hazard-decomposition",
@@ -95,7 +103,11 @@
     ],
     "headline": "Explicit checks helped; calibration and latency limits remain.",
     "repo": "AnshChoudhary/typesafe-ai-firewall",
-    "revision": "1b945790797651abedbfbafb9a21c293ba5c837e"
+    "revision": "1b945790797651abedbfbafb9a21c293ba5c837e",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   },
   {
     "id": "log-triage",
@@ -128,7 +140,11 @@
         "url": "https://github.com/reachjalil/jevlogs"
       }
     ],
-    "headline": "Conservative triage can add cost; reuse may help more."
+    "headline": "Conservative triage can add cost; reuse may help more.",
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "taxonomy-cap",
@@ -160,7 +176,11 @@
         "url": "https://github.com/reachjalil/jev-tree/tree/main/benchmarks"
       }
     ],
-    "headline": "Trees avoid truncation; structured data may need no model."
+    "headline": "Trees avoid truncation; structured data may need no model.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   },
   {
     "id": "vendor-workflows",
@@ -193,7 +213,11 @@
         "url": "https://vercel.com/ai-gateway/models/jev"
       }
     ],
-    "headline": "A reason to test typed decisions, not a savings guarantee."
+    "headline": "A reason to test typed decisions, not a savings guarantee.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   },
   {
     "id": "workflow-design",
@@ -226,7 +250,11 @@
         "url": "https://docs.typesafe.ai/patterns/fan-out"
       }
     ],
-    "headline": "Specify what uncertain and mixed cases should do."
+    "headline": "Specify what uncertain and mixed cases should do.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   },
   {
     "id": "batched-evidence",
@@ -260,7 +288,11 @@
         "url": "https://github.com/reachjalil/system-one-bench/blob/main/benchmarks/agent-decisions/results-2026-09-20T04-06-31.559Z.json"
       }
     ],
-    "headline": "Fewer calls and tokens, with one extra error in this small test."
+    "headline": "Fewer calls and tokens, with one extra error in this small test.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   },
   {
     "id": "passage-reranking",
@@ -292,7 +324,11 @@
         "label": "Pinned method, results and limits",
         "url": "https://github.com/anessbelbati/jev-rerank-bench/blob/cd9a35b22aeb4187334f7018a0ee1960a7470586/README.md"
       }
-    ]
+    ],
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "agent-failure-attribution",
@@ -328,7 +364,11 @@
         "label": "Pinned results and comparison limits",
         "url": "https://github.com/TokenTrim/jev-agent-failure-benchmark/blob/4d46af795a4a4409940a65857da73e45abaea2db/RESULTS.md"
       }
-    ]
+    ],
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "phishing-signals",
@@ -360,7 +400,11 @@
         "label": "Pinned comparison and added controls",
         "url": "https://github.com/anisselbd/jev-phishing-bench/blob/1d56e8c64d029a9554a0874e2ef2901ed196e230/README.md"
       }
-    ]
+    ],
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
   },
   {
     "id": "decision-suite",
@@ -397,6 +441,263 @@
         "label": "Pinned task scores and intervals",
         "url": "https://github.com/OmarMujahid/jev-decision-bench/blob/0883fa781729ab571005253f6b288ec67f49dd29/RESULTS.md"
       }
-    ]
+    ],
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
+  },
+  {
+    "id": "community-router",
+    "title": "A personal app routes two recipe requests",
+    "status": "anecdotal",
+    "kind": "firsthand Reddit report",
+    "affiliation": "Reddit author blackbarata states no TypeSafe affiliation.",
+    "reviewed": "2026-09-20",
+    "workload": "Choose a specialist agent from its description.",
+    "method": "The author tried an incomplete recipe transcript and a complete transcript in a personal knowledge app.",
+    "baseline": "No controlled baseline reported.",
+    "finding": "The author reports selecting a scraper for missing recipe details and a recipe agent when the amounts and steps were present.",
+    "limitations": "Two examples, no test set or load study. Reported probabilities do not establish accuracy.",
+    "implication": "Try description-based routing with missing-detail cases and an explicit review option.",
+    "metrics": [
+      "Author-reported wall times, including network: 145 ms and 271 ms."
+    ],
+    "patterns": [
+      "next-tool",
+      "item-match"
+    ],
+    "sources": [
+      {
+        "label": "Original firsthand report",
+        "url": "https://www.reddit.com/r/LLMDevs/comments/1wihigc/tried_typesafes_new_decisiononly_model_jev_as_an/"
+      }
+    ],
+    "headline": "Descriptions can distinguish two plausible routes; reliability remains untested.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
+  },
+  {
+    "id": "community-compaction",
+    "title": "A user tries Jev to reduce a long agent history",
+    "status": "anecdotal",
+    "kind": "firsthand Reddit report",
+    "affiliation": "A Reddit user describes using another author's compaction plugin. The plugin is by Tamara Tran.",
+    "reviewed": "2026-09-20",
+    "workload": "Select old tool records to keep in a coding-agent session.",
+    "method": "A user reports trying fast-jev-compaction during a server redeployment. The thread links its public implementation.",
+    "baseline": "No controlled baseline reported.",
+    "finding": "The user describes the plugin as useful during a long task. Commenters raise cache-cost and lost-context concerns.",
+    "limitations": "Anecdotal satisfaction, not measured task quality or net cost. The session and a matched baseline are unavailable.",
+    "implication": "Test history selection on saved, consented sessions before automatic deletion. Keep an unmodified transcript and include cache rewrite costs.",
+    "metrics": [],
+    "patterns": [
+      "memory-candidate",
+      "context-relevance"
+    ],
+    "sources": [
+      {
+        "label": "Firsthand use and discussion",
+        "url": "https://www.reddit.com/r/ClaudeCode/comments/1wkjnrz/instant_claude_code_compaction_is_my_favorite_use/"
+      },
+      {
+        "label": "Pinned implementation",
+        "url": "https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/README.md"
+      }
+    ],
+    "headline": "A user found history selection useful; quality and cache costs need a test.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
+  },
+  {
+    "id": "x-compaction-discussion",
+    "title": "X posts disagree about compaction by filtering",
+    "status": "anecdotal",
+    "kind": "X anecdotes and criticism",
+    "affiliation": "Public posts by @0x_kaize and @theo. Their views are not System One measurements.",
+    "reviewed": "2026-09-20",
+    "workload": "Decide whether filtering tool history is a useful compaction strategy.",
+    "method": "We read the public previews returned by X's official oEmbed endpoint. The full posts were unavailable through our web reader.",
+    "baseline": "No controlled baseline reported.",
+    "finding": "The accessible preview from @0x_kaize describes trying Jev for context compaction. @theo's preview challenges the strategy and distinguishes compaction from filtering.",
+    "limitations": "Only truncated primary previews were accessible. We do not attribute detailed mechanisms, metrics or the full criticism to these excerpts.",
+    "implication": "Retain opposing reports as research leads. Test task continuity and information loss instead of treating enthusiasm or criticism as an outcome.",
+    "metrics": [],
+    "patterns": [
+      "memory-candidate"
+    ],
+    "sources": [
+      {
+        "label": "kaize, September 18",
+        "url": "https://x.com/0x_kaize/status/2100913118528393596"
+      },
+      {
+        "label": "Theo, September 18",
+        "url": "https://x.com/theo/status/2100762304862384257"
+      }
+    ],
+    "headline": "Conflicting firsthand views identify a question to test, not a settled result.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
+  },
+  {
+    "id": "design-selection",
+    "title": "Choose a card design from a page description",
+    "status": "anecdotal",
+    "kind": "builder report",
+    "affiliation": "betterimage.io describes its own product integration.",
+    "reviewed": "2026-09-20",
+    "workload": "Select a predefined design and palette using public page metadata.",
+    "method": "The builder supplies title, description and descriptions of candidate designs. Code renders the selected design and keeps an editable fallback.",
+    "baseline": "No controlled baseline reported.",
+    "finding": "The product page describes Jev choosing a design and contributing palette choices to rendered variants.",
+    "limitations": "No blinded preference study or controlled baseline. The page mentions both 60 candidates and a 100-design library without explaining that difference.",
+    "implication": "Offer palette and item selection over described, approved candidates. Check color contrast in code and review the rendered result.",
+    "metrics": [],
+    "patterns": [
+      "palette-match",
+      "item-match"
+    ],
+    "sources": [
+      {
+        "label": "Builder's explanation and examples",
+        "url": "https://betterimage.io/jev"
+      }
+    ],
+    "headline": "A concrete design-selection integration exists; preference quality is unmeasured.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
+  },
+  {
+    "id": "command-palette",
+    "title": "Select an editor command from an informal request",
+    "status": "reported",
+    "kind": "builder experiment",
+    "affiliation": "dabit3/jev-experiments; community demo repository, not a TypeSafe benchmark.",
+    "reviewed": "2026-09-20",
+    "workload": "Map an informal description to a command and allowed arguments.",
+    "method": "NL Palette lists 66 commands and reports a 30-phrase comparison with its fuzzy matcher. Six questions share a request.",
+    "baseline": "The demo's fuzzy command-name matcher.",
+    "finding": "The author reports 30/30 top choices for Jev versus 6/30 for fuzzy matching.",
+    "limitations": "Small authored phrase set, not a production study. This is a command palette, not a color-palette experiment.",
+    "implication": "Provide an action-menu recipe that returns existing command IDs. The application handles availability, confirmation and execution.",
+    "metrics": [],
+    "patterns": [
+      "command-match",
+      "next-tool"
+    ],
+    "sources": [
+      {
+        "label": "Pinned demo and test method",
+        "url": "https://github.com/dabit3/jev-experiments/blob/c469e5bfdc73eb3e1999bba2569e66b579a970fd/nl-palette/README.md"
+      }
+    ],
+    "headline": "An authored demo maps descriptions to commands better than its name matcher.",
+    "repo": "dabit3/jev-experiments",
+    "revision": "c469e5bfdc73eb3e1999bba2569e66b579a970fd",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
+  },
+  {
+    "id": "sre-decision-support",
+    "title": "Choose diagnostic tests and review repair evidence",
+    "status": "reported",
+    "kind": "application experiment",
+    "affiliation": "Jackson Clark, Saad Mohammad Rafid Pial, Yiming Su and Tianyin Xu; SREGym authors.",
+    "reviewed": "2026-09-20",
+    "workload": "Help a coding agent investigate and repair a controlled incident.",
+    "method": "Ten SREGym-Lite problems, five attempts per condition. The same Luna agent gets optional Jev planning and submission-review tools.",
+    "baseline": "The same agent without Jev tools.",
+    "finding": "The authors report 24/50 successful attempts with Jev versus 20/50 without it. Two problems regressed.",
+    "limitations": "A small experiment, without a diagnosis-time comparison. Jev sometimes accepted temporary recovery as a durable repair and could not rank an absent correct hypothesis.",
+    "implication": "Evaluate diagnostic candidates and repair invariants separately. Keep executable checks and the agent responsible for the repair.",
+    "metrics": [
+      "Observed passes: 24/50 with Jev; 20/50 without Jev."
+    ],
+    "patterns": [
+      "diagnostic-test",
+      "repair-check",
+      "evidence-check"
+    ],
+    "sources": [
+      {
+        "label": "Original report, including regressions",
+        "url": "https://sregym.com/blog/jev-sregym-lite"
+      }
+    ],
+    "headline": "More attempts passed in one small study; some incidents regressed.",
+    "confidence": {
+      "level": "moderate",
+      "reason": "A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved."
+    }
+  },
+  {
+    "id": "official-cookbooks",
+    "title": "TypeSafe examples for decisions over supplied text",
+    "status": "reference",
+    "kind": "official examples",
+    "affiliation": "TypeSafe AI documentation. Vendor examples, not independent validation of System One recipes.",
+    "reviewed": "2026-09-20",
+    "workload": "Choose known values, check citations, align records and classify retrieved text.",
+    "method": "We reviewed TypeSafe's cookbooks and use-case map. Examples combine typed model answers with deterministic code.",
+    "baseline": "No controlled baseline reported.",
+    "finding": "The examples document concrete integrations for citation checks, entity matching, closed-set arguments, semantic search and structured classification.",
+    "limitations": "Each cookbook has its own inputs and model revision. A demo result does not transfer automatically to a different workload or Engine recipe.",
+    "implication": "Ship small recipes with the same decision shapes and their own tests. Preserve source IDs, no-match options and caller control.",
+    "metrics": [],
+    "patterns": [
+      "citation-check",
+      "entity-match",
+      "item-match",
+      "semantic-search",
+      "text-labels",
+      "writing-check",
+      "structured-fields"
+    ],
+    "sources": [
+      {
+        "label": "Citation checks",
+        "url": "https://docs.typesafe.ai/cookbooks/citation_check"
+      },
+      {
+        "label": "Entity alignment",
+        "url": "https://docs.typesafe.ai/cookbooks/entity_alignment"
+      },
+      {
+        "label": "Closed-set arguments",
+        "url": "https://docs.typesafe.ai/cookbooks/function_calling"
+      },
+      {
+        "label": "Passage classification",
+        "url": "https://docs.typesafe.ai/cookbooks/classifying_rag_passages"
+      },
+      {
+        "label": "Line selection",
+        "url": "https://docs.typesafe.ai/cookbooks/semantic_find"
+      },
+      {
+        "label": "Document labels",
+        "url": "https://docs.typesafe.ai/cookbooks/autoformat"
+      },
+      {
+        "label": "Example use-case map",
+        "url": "https://docs.typesafe.ai/concepts/use-case-map"
+      }
+    ],
+    "headline": "Official examples show how to frame the question; each adaptation needs testing.",
+    "confidence": {
+      "level": "low",
+      "reason": "This source suggests a useful experiment but does not establish a reliable benefit in a real agent workflow."
+    }
   }
 ]

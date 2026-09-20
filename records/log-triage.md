@@ -4,7 +4,11 @@ first-party · public-dataset study · reviewed 2026-09-20
 
 Jalil Laaraichi / jevlogs; same maintainer as System One Engine.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Select log records for deeper analysis while preserving originals.
 

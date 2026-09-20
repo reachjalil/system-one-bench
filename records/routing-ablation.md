@@ -4,7 +4,11 @@ reported · independent experiment · reviewed 2026-09-20
 
 TokenTrim; external author; not independently reproduced here.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Select a model for a user query.
 

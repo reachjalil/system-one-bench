@@ -7,7 +7,7 @@ const ids=new Set();
 for(const r of records){
  assert.match(r.id,/^[a-z0-9-]+$/);assert(!ids.has(r.id),`Duplicate ${r.id}`);ids.add(r.id);
  for(const k of ['title','status','kind','affiliation','reviewed','workload','method','baseline','finding','limitations','implication'])assert(typeof r[k]==='string'&&r[k].length>3,`${r.id}: missing ${k}`);
- assert(['reported','reproduced','first-party','reference'].includes(r.status));
+ assert(['reported','reproduced','first-party','reference','anecdotal'].includes(r.status));
  assert.match(r.reviewed,/^\d{4}-\d{2}-\d{2}$/);
  assert(r.sources.length>0);for(const s of r.sources){assert(new URL(s.url).protocol==='https:');assert(s.label);}
  assert(Array.isArray(r.metrics));assert(Array.isArray(r.patterns));
@@ -50,3 +50,16 @@ async function checkLinks(dir) {
 }
 await checkLinks(root);
 console.log(`Validated ${guides.length} guides and local Markdown links.`);
+
+const theses=JSON.parse(await readFile(resolve(root,'theses.json'),'utf8'));
+const thesisIds=new Set();
+for(const t of theses){
+ assert.match(t.id,/^[a-z0-9-]+$/); assert(!thesisIds.has(t.id)); thesisIds.add(t.id);
+ assert(t.claim.startsWith('With Jev,'));
+ for(const k of ['situation','input','result','label']) assert(t.example[k]?.length>10);
+ for(const r of [t.value,t.confidence]) {assert(['low','medium','moderate','high'].includes(r.level));assert(r.reason.length>20);}
+ for(const id of t.evidence) assert(ids.has(id),`${t.id}: missing evidence ${id}`);
+ assert(t.test.status==='planned'); assert(t.test.dataset && t.test.baselines.length && t.test.metrics.length && t.test.decision);
+}
+for(const r of records) {assert(['low','moderate','high'].includes(r.confidence.level));assert(r.confidence.reason.length>20);}
+console.log(`Validated ${theses.length} theses, examples, ratings and test plans.`);

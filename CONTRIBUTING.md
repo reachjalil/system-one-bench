@@ -43,3 +43,11 @@ Review dates older than 30 days are flagged by validation for re-checking.
 For a new live experiment, write labels and scoring rules first, hash the corpus,
 record every attempt and preserve the first run. Prompt changes require a new revision
 and a fresh evaluation set before calling the result held-out.
+
+## Capability theses and community reports
+
+Edit theses.json to propose what an agent can do. Lead with a human example, then
+explain potential value, evidence confidence, disagreement and a testable next step.
+Firsthand Reddit and X reports are welcome under anecdotal status. Record access
+limits and avoid presenting social engagement as validation. Follow the rating rubric
+in METHODOLOGY.md. Link a source to every factual observation.

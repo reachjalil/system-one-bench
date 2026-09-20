@@ -47,3 +47,42 @@ This is a curated set of primary reports, not a survey of every Jev repository.
 A demo can establish that an integration exists. It cannot establish that the
 integration is faster, cheaper or more accurate. A source update requires review;
 we do not silently replace an old conclusion with a new README headline.
+
+## Value and confidence
+
+Each capability thesis starts with an illustrative human example. It describes a
+possible interaction, not an observed successful run. The linked records describe
+what someone actually reported or measured.
+
+Potential value is an editorial priority for individual coding and chat-agent users:
+
+- High means a repeated task could remove substantial reading, waiting or review work.
+- Medium means a narrower task or optional convenience with a clear user benefit.
+- Low means the current evidence suggests little gain, added overhead or a stronger simple alternative.
+
+A high value rating is a reason to test an idea, not a commercial performance claim.
+The written reason matters more than the label. Ratings do not use follower counts,
+upvotes, GitHub stars or a Jev-generated score.
+
+Evidence confidence describes support for the stated conclusion:
+
+- Low means an anecdote, demo, official example or small diagnostic leaves the main benefit untested.
+- Moderate means a documented comparison supports a bounded conclusion, with meaningful limits on transfer or reproduction.
+- High requires repeated representative results, complete-workflow comparisons and an independent reproduction. No current capability thesis meets that bar.
+
+Confidence in an evidence record concerns its bounded finding. Confidence in a thesis
+concerns the broader proposed use. A well-documented negative finding can therefore
+support a low-confidence benefit claim. Neither label is the probability returned by
+Jev or a numerical estimate of correctness.
+
+## Community reports
+
+Firsthand Reddit or X posts are eligible evidence. Record the author, original link,
+review date, access limits and what the person actually tried. Separate a successful
+example from enthusiasm, speculation or criticism. Do not turn reposts into independent
+confirmations of the same result. Include conflicting accounts in the same thesis.
+
+When only a truncated primary preview is accessible, say so. Do not infer the rest of
+the thread from an aggregator. No login-only discussion or private session belongs in
+the public catalog. A missing baseline remains missing; it does not disqualify a useful
+anecdote, but it limits the claim.

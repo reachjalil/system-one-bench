@@ -1,0 +1,34 @@
+name: Jev use case or community report
+description: Suggest a useful capability, firsthand experience, demo or counterexample
+title: "[Use case] "
+body:
+  - type: textarea
+    id: value
+    attributes:
+      label: What could a person or agent do with Jev?
+      description: Start with a human example. Describe the input, decision and useful outcome.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Original source URL
+      description: A firsthand X or Reddit post, builder demo, official example or measured report is welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What was actually tried?
+      description: Separate observation from a proposed idea. Unknown baseline, sample size or cost is acceptable when stated.
+    validations:
+      required: true
+  - type: textarea
+    id: uncertainty
+    attributes:
+      label: What would raise or lower your confidence?
+      description: Include conflicting reports, failure cases and a comparison we could run.
+  - type: textarea
+    id: affiliation
+    attributes:
+      label: Author and affiliation

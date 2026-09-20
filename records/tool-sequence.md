@@ -4,7 +4,11 @@ reported · independent experiment · reviewed 2026-09-20
 
 BillionsBobby/JevRouter; external project author; not rerun here.
 
-## What was tested
+## Evidence confidence
+
+moderate. A described comparison supports a bounded conclusion. Workload transfer and independent reproduction remain unresolved.
+
+## What was observed
 
 Predict the first five tool calls for Toolathlon tasks.
 
