@@ -1,0 +1,211 @@
+{
+  "at": "2026-09-20T06:12:37.898Z",
+  "fixtureSha256": "f3deffc8e4105b912022ed4eb2dc29e12a504b9aa11d8820d880ccec745ec1da",
+  "cases": 8,
+  "policyMatched": 4,
+  "policyCases": 4,
+  "editorialCases": 4,
+  "providerCalls": 6,
+  "inputTokens": 3758,
+  "outputTokens": 180,
+  "modelLatencyMs": {
+    "p50": 254,
+    "p95": 512
+  },
+  "limits": "Small authored diagnostic using installed cue text. Editorial cases have no accuracy label. No human listening, production savings, or probability calibration claim.",
+  "results": [
+    {
+      "id": "recent-speech",
+      "kind": "policy",
+      "example": "The narrator just finished speaking. Keep a gap before another optional remark.",
+      "expected": "silence",
+      "matched": true,
+      "result": {
+        "contextId": "parable-reference:recent-speech",
+        "action": "silence",
+        "candidateId": null,
+        "probability": null,
+        "reason": "deterministic"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cached": false,
+        "latencyMs": 1
+      },
+      "wallMs": 36,
+      "inputSha256": "0d54830b7c01545d14ef8bfd85b308dee91414ad2ce3fcc652a428967c6f7933"
+    },
+    {
+      "id": "completed-recording",
+      "kind": "policy",
+      "example": "The player already heard this exact waiting remark. Do not play it again.",
+      "expected": "silence",
+      "matched": true,
+      "result": {
+        "contextId": "parable-reference:completed-recording",
+        "action": "silence",
+        "candidateId": null,
+        "probability": null,
+        "reason": "deterministic"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cached": false,
+        "latencyMs": 2
+      },
+      "wallMs": 8,
+      "inputSha256": "324ca1e869f51ab01b5faa9b64926cb5553469392c17cb7d1bba3558e8fd60ad"
+    },
+    {
+      "id": "keep-the-promise",
+      "kind": "policy",
+      "example": "The garden narrator already promised to let a thought wait. A second promise would interrupt the quiet.",
+      "expected": "silence",
+      "matched": true,
+      "result": {
+        "contextId": "parable-reference:keep-the-promise",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.25,
+        "reason": "uncertain"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 539,
+        "outputTokens": 20,
+        "cached": false,
+        "latencyMs": 505
+      },
+      "wallMs": 512,
+      "inputSha256": "69181284a04b45ff06c140f59ec1b446952b3b7e4eff7106640a106e111f32ec"
+    },
+    {
+      "id": "unsupported-dry-room",
+      "kind": "policy",
+      "example": "The rain is still running. A recording saying there is no rain contradicts the current room.",
+      "expected": "silence",
+      "matched": true,
+      "result": {
+        "contextId": "parable-reference:unsupported-dry-room",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.1,
+        "reason": "model"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 556,
+        "outputTokens": 20,
+        "cached": false,
+        "latencyMs": 229
+      },
+      "wallMs": 231,
+      "inputSha256": "6eb58460946bbff4b44b22062be00072120bd20353ad7ba52d19070088cdd2e6"
+    },
+    {
+      "id": "window-or-waiting",
+      "kind": "editorial",
+      "example": "A window observation and a waiting remark become ready together. Choose at most one, or keep the room quiet.",
+      "expected": null,
+      "matched": null,
+      "result": {
+        "contextId": "parable-reference:window-or-waiting",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.4,
+        "reason": "uncertain"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 742,
+        "outputTokens": 50,
+        "cached": false,
+        "latencyMs": 243
+      },
+      "wallMs": 254,
+      "inputSha256": "e579ac2a93e20ec658d80c1db605560ba8df8cb0eaf713be6abb587f99ffc1b8"
+    },
+    {
+      "id": "garden-attention",
+      "kind": "editorial",
+      "example": "The player has noticed the planting while a remark about waiting is queued. Compare the observation with silence.",
+      "expected": null,
+      "matched": null,
+      "result": {
+        "contextId": "parable-reference:garden-attention",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.45,
+        "reason": "uncertain"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 736,
+        "outputTokens": 50,
+        "cached": false,
+        "latencyMs": 235
+      },
+      "wallMs": 238,
+      "inputSha256": "34d5db23e3665f74af327f5db7a4298e1d9b08fb646f8fe027e98bdc27fea8a5"
+    },
+    {
+      "id": "quiet-return",
+      "kind": "editorial",
+      "example": "The player stopped the rain and returned home. Decide whether the recorded acknowledgment adds something after the arrival.",
+      "expected": null,
+      "matched": null,
+      "result": {
+        "contextId": "parable-reference:quiet-return",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.47,
+        "reason": "uncertain"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 605,
+        "outputTokens": 20,
+        "cached": false,
+        "latencyMs": 317
+      },
+      "wallMs": 320,
+      "inputSha256": "964298944c929987a30a110a5c59c88f6c8c4c37877c111aef41e0252765737b"
+    },
+    {
+      "id": "another-permission-to-stay",
+      "kind": "editorial",
+      "example": "The narrator recently said the player could stay in the bedroom. Would another reassurance in the kitchen become repetitive?",
+      "expected": null,
+      "matched": null,
+      "result": {
+        "contextId": "parable-reference:another-permission-to-stay",
+        "action": "silence",
+        "candidateId": null,
+        "probability": 0.43,
+        "reason": "uncertain"
+      },
+      "meta": {
+        "model": "vercel:typesafe-ai/jev",
+        "calls": 1,
+        "inputTokens": 580,
+        "outputTokens": 20,
+        "cached": false,
+        "latencyMs": 375
+      },
+      "wallMs": 377,
+      "inputSha256": "0b90a49a3474f717bf1b220900975698a39f812b73d01499af469a566f0e640f"
+    }
+  ],
+  "disclosure": "The authors build System One and The Infinite Parable. The private authored corpus is not redistributed. Public rows retain every result and usage receipt, with input hashes. This release is not independently reproducible from this repository."
+}
