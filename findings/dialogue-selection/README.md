@@ -83,3 +83,7 @@ is preferred so an always-silent policy cannot appear successful.
 Keep any changed question policy on a new revision and use fresh labeled scenarios.
 Ship a stronger claim only after it beats the deterministic and always-silent
 baselines on listening quality without violating playback or story ownership.
+
+The [planned listening study](LISTENING_STUDY.md) specifies twenty path situations,
+three comparison policies, blinded review and the measurements to retain. It is a
+protocol draft, not a completed experiment.
