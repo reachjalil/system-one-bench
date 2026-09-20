@@ -2,15 +2,17 @@
 
 reported · vendor benchmark · reviewed 2026-09-20
 
-**Affiliation:** TypeSafe AI, the Jev model vendor; not independently reproduced here.
+TypeSafe AI, the Jev model vendor; not independently reproduced here.
 
-## Decision and method
+## What was tested
 
 Bounded decisions inside four application workflows.
 
 Vendor launch comparison of typed Jev evaluations and chat-model decision wrappers.
 
-**Baseline:** Vendor-selected chat-model baselines.
+## Baseline
+
+Vendor-selected chat-model baselines.
 
 ## Finding
 
@@ -20,13 +22,13 @@ The launch report supports evaluating typed decisions as a separate operation. I
 
 ## Limits
 
-Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent’s total cost or time. Pricing and Gateway promotions change.
+Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent's total cost or time. Pricing and Gateway promotions change.
 
-## Implication for tools (our interpretation)
+## What we would test in System One
 
 Batch independent questions over shared evidence. Measure host tool overhead and final outcomes before promising savings.
 
-Engine patterns: `acceptance`, `context-relevance`, `rubric`
+This feature recommendation is our interpretation. Related Engine patterns: `acceptance`, `context-relevance`, `rubric`.
 
 ## Primary sources
 

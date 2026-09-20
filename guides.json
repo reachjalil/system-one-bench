@@ -1,0 +1,334 @@
+[
+  {
+    "id": "check-a-claim",
+    "title": "Check a claim against tool output",
+    "summary": "Ask whether the evidence supports a statement before an agent repeats it as fact.",
+    "audience": "Coding and chat agents",
+    "patterns": [
+      "evidence-check",
+      "acceptance"
+    ],
+    "evidence": [
+      "batched-evidence",
+      "phishing-signals"
+    ],
+    "sections": [
+      {
+        "id": "when",
+        "title": "Use it when the wording needs interpretation",
+        "paragraphs": [
+          "An agent has run a command or read a document and is about to describe the result. The useful question is narrow. Does this output support the exact claim?",
+          "Parse exit codes, test counts and HTTP status codes directly when those fields settle the answer. Jev is an option when the claim depends on the meaning of a passage. It cannot verify a test that never ran."
+        ]
+      },
+      {
+        "id": "try",
+        "title": "Try the existing recipe",
+        "paragraphs": [
+          "Start System One with npx sysone. Add your Vercel AI Gateway key in Settings. In Library, open Check a claim, replace the example and run it.",
+          "For an agent, fetch the evidence-check recipe with sysone_patterns and send the edited input to sysone_decide. This example is a valid decide request. It is a teaching example, not a new benchmark."
+        ],
+        "code": "{\n  \"state\": \"Claim: the new release is live. Evidence: the build passed, but deployment stopped because the destination project was not selected.\",\n  \"questions\": {\n    \"supported\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does the supplied evidence establish that the new release is live?\"\n    },\n    \"contradicted\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does the supplied evidence explicitly contradict the claim that the new release is live?\"\n    }\n  }\n}",
+        "language": "json"
+      },
+      {
+        "id": "interpret",
+        "title": "Keep the original evidence with the result",
+        "paragraphs": [
+          "This example should not support a successful deployment claim. Inspect both answers. Missing evidence and an explicit contradiction are different cases.",
+          "Choose review thresholds using labeled examples from your workflow. A high model probability is not a measured guarantee of correctness. Missing answers, conflicting signals and timeouts go back to the agent for review.",
+          "The calling agent writes the final response and cites the original command or document. System One does not approve a release or perform the deployment."
+        ]
+      },
+      {
+        "id": "measure",
+        "title": "Compare one batch with separate checks",
+        "paragraphs": [
+          "Our 12-case diagnostic asked two questions per input. Batching used fewer requests but made one additional label error. The complete run is linked below.",
+          "Before adopting the recipe, include stale build output, canceled jobs, partial successes and contradictory reports. Score the final statement as well as the individual answers. Count any extra host turn needed to read the result."
+        ]
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Design guide. These examples are not independently validated Engine benchmarks."
+  },
+  {
+    "id": "shortlist-context",
+    "title": "Shortlist context for an agent",
+    "summary": "Evaluate a small set of retrieved passages without losing the source material.",
+    "audience": "Coding and research agents",
+    "patterns": [
+      "context-relevance",
+      "rubric"
+    ],
+    "evidence": [
+      "passage-reranking",
+      "decision-suite"
+    ],
+    "sections": [
+      {
+        "id": "when",
+        "title": "Start after retrieval",
+        "paragraphs": [
+          "Repository search or document search has returned candidates. Several share the query words, but only some explain the problem. Jev can rate those candidates against a specific task.",
+          "Keep paths, document IDs and retrieval order. Remove exact duplicates and enforce access rules before inference. Jev cannot recover a file that search never found."
+        ]
+      },
+      {
+        "id": "try",
+        "title": "Score a few passages at a time",
+        "paragraphs": [
+          "Open Keep useful context in Library. Supply the task and candidate text. For an MCP client, fetch context-relevance with sysone_patterns and evaluate it with sysone_decide.",
+          "For several passages, give each a stable ID and its own question in one request. The current Engine accepts at most eight questions. The published 30-passage study is evidence for an experiment, not a result reproduced by this smaller recipe."
+        ],
+        "code": "{\n  \"state\": \"Task: explain why a form submits twice. Passage A, SubmitButton.tsx: the button calls submitOrder in onClick. Passage B, CheckoutForm.tsx: the enclosing form also calls submitOrder in onSubmit. Passage C, styles.css: button border colors.\",\n  \"questions\": {\n    \"passageA\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage A provide evidence that helps explain the duplicate submission?\"\n    },\n    \"passageB\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage B provide evidence that helps explain the duplicate submission?\"\n    },\n    \"passageC\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage C provide evidence that helps explain the duplicate submission?\"\n    }\n  }\n}",
+        "language": "json"
+      },
+      {
+        "id": "retain",
+        "title": "Return IDs and preserve uncertain passages",
+        "paragraphs": [
+          "Keep the original candidates accessible to the agent. Use relevance to order what it reads first. Keep uncertain passages in a review list rather than deleting them.",
+          "Adjacent files can explain each other, as passages A and B do here. Include tests where one apparently irrelevant passage contains the only counterexample. Also test batches with no useful result."
+        ]
+      },
+      {
+        "id": "measure",
+        "title": "Measure the answer after selection",
+        "paragraphs": [
+          "Compare the existing retrieval order, deterministic deduplication and Jev selection on the same tasks. Record whether the final answer is correct and cites the right passage.",
+          "Count saved host input tokens, added decision tokens and the time spent fetching omitted context. The reranking study measures ranking quality. It does not establish that this coding workflow saves money or preserves answer quality."
+        ]
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Design guide. These examples are not independently validated Engine benchmarks."
+  },
+  {
+    "id": "choose-a-tool",
+    "title": "Choose the next available tool",
+    "summary": "Give an agent a tool recommendation from a list it can actually use.",
+    "audience": "Agents with several connected tools",
+    "patterns": [
+      "next-tool",
+      "clarification"
+    ],
+    "evidence": [
+      "tool-sequence",
+      "routing-ablation"
+    ],
+    "sections": [
+      {
+        "id": "when",
+        "title": "Use it for overlapping tool descriptions",
+        "paragraphs": [
+          "An agent can search a repository, look up public documentation or run a test. The next step depends on the current task. A finite choice lets Jev recommend one of those operations.",
+          "Filter out unavailable or unauthorized tools before creating the question. If the user named a tool, or a deterministic rule identifies it, follow that instruction without another model call."
+        ]
+      },
+      {
+        "id": "try",
+        "title": "Include a way to decline the choice",
+        "paragraphs": [
+          "Open Choose the next tool in Library. An agent can retrieve next-tool with sysone_patterns and evaluate it with sysone_decide.",
+          "Use IDs the caller already knows. Describe what each tool does and add a review option. The example chooses a tool category, not a command or its arguments."
+        ],
+        "code": "{\n  \"state\": \"Task: find the source definition of handleRequest in this checkout. The available tools are listed in the question.\",\n  \"questions\": {\n    \"tool\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Choose the available tool that directly helps with the next step. Use review if none fits or more context is required.\",\n      \"criteria\": {\n        \"repo\": \"Search source files in the current checkout\",\n        \"web\": \"Look up public documentation on the internet\",\n        \"tests\": \"Run the existing automated tests\",\n        \"review\": \"No listed tool is suitable, or the task is ambiguous\"\n      }\n    }\n  }\n}",
+        "language": "json"
+      },
+      {
+        "id": "execute",
+        "title": "Let the calling agent prepare the action",
+        "paragraphs": [
+          "The calling agent checks the recommendation, supplies arguments and follows its existing approval rules. System One returns advice. It does not execute the selected tool.",
+          "After the real tool returns, use its actual result for the next decision. Predicting an entire sequence before execution ignores information that later steps may need."
+        ]
+      },
+      {
+        "id": "measure",
+        "title": "Score completed tasks",
+        "paragraphs": [
+          "The public tool study compares predicted positions in short sequences. It does not report complete agent task success. A correct first recommendation can still lead to a failed task.",
+          "Compare direct agent selection, a simple tool-description rule and the Jev recipe. Record completion quality, wrong-tool calls, host turns and total time. Do not substitute a model router for this experiment. The routing study found no incremental benefit from its Jev signal."
+        ]
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Design guide. These examples are not independently validated Engine benchmarks."
+  },
+  {
+    "id": "write-a-question",
+    "title": "Write a question Jev can evaluate",
+    "summary": "Define the evidence, possible answers and review policy before adjusting a threshold.",
+    "audience": "Anyone creating a System One pattern",
+    "patterns": [
+      "clarification",
+      "acceptance",
+      "rubric"
+    ],
+    "evidence": [
+      "workflow-design",
+      "phishing-signals",
+      "hazard-decomposition"
+    ],
+    "sections": [
+      {
+        "id": "define",
+        "title": "Write the label rule first",
+        "paragraphs": [
+          "Choose one decision that changes what the caller does next. Write a sentence that lets a person label examples consistently. List missing information, conflicting evidence and mixed cases before calling the model.",
+          "For example, \"Is this good?\" leaves the standard undefined. \"Does the supplied test output show a passing test for the changed behavior?\" states both the evidence and the criterion."
+        ]
+      },
+      {
+        "id": "shape",
+        "title": "Choose the answer format",
+        "paragraphs": [],
+        "table": {
+          "columns": [
+            "Format",
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Boolean",
+              "One property can be present or absent.",
+              "Does the passage explicitly support the claim?"
+            ],
+            [
+              "Choice",
+              "One known option should win. Include review when needed.",
+              "Which available tool fits the next step?"
+            ],
+            [
+              "Score",
+              "An ordered rubric describes increasing levels.",
+              "Unrelated, related, partly answers, fully answers."
+            ]
+          ]
+        }
+      },
+      {
+        "id": "separate",
+        "title": "Separate independent properties",
+        "paragraphs": [
+          "A broad verdict can hide several judgments. Ask about each property you can label, then let the caller combine the results under a written policy.",
+          "For a status report, check whether a build completed and whether deployment completed separately. Put questions that share the same evidence into one request. The Engine accepts up to eight questions.",
+          "Questions in the same request do not read each other's answers. If one decision depends on another result, handle that dependency in the calling code or use a later request."
+        ]
+      },
+      {
+        "id": "unknown",
+        "title": "Give uncertainty a concrete next step",
+        "paragraphs": [
+          "Decide what the caller does with an absent answer, a low score, disagreement or a timeout. It might retain a passage, request missing evidence or defer to the agent. A threshold alone does not define that behavior.",
+          "Do not read a returned probability of 0.9 as proof of 90% accuracy in your workload. Check calibration and retained-answer accuracy on examples that were not used to choose the threshold."
+        ]
+      },
+      {
+        "id": "version",
+        "title": "Keep wording and evaluation versions together",
+        "paragraphs": [
+          "Save the question text, candidate descriptions, rubric order and model/provider version with the test results. Change one factor at a time when investigating a failure.",
+          "A better prompt on the same examples is a development result. Evaluate on fresh examples before claiming a quality improvement. Keep the failed prompt and first run available for comparison."
+        ]
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Design guide. These examples are not independently validated Engine benchmarks."
+  },
+  {
+    "id": "measure-a-workflow",
+    "title": "Measure whether offloading helps",
+    "summary": "Compare completed tasks with and without System One, including review and fallback costs.",
+    "audience": "Individual coding and chat agent users",
+    "patterns": [
+      "evidence-check",
+      "context-relevance",
+      "next-tool"
+    ],
+    "evidence": [
+      "routing-ablation",
+      "log-triage",
+      "batched-evidence",
+      "decision-suite"
+    ],
+    "sections": [
+      {
+        "id": "baseline",
+        "title": "Compare the same work",
+        "paragraphs": [
+          "Choose a repeated task you already perform. Save the inputs and write a completion rule before changing the workflow. Run the existing agent, the agent with System One and a deterministic alternative where one applies.",
+          "Keep model settings, permissions and starting state fixed. Alternate the order of repeated runs to reduce timing bias. Separate warm-cache and uncached results. Retain failures and canceled requests."
+        ]
+      },
+      {
+        "id": "ledger",
+        "title": "Keep a task-level record",
+        "paragraphs": [
+          "Studio records Engine activity. It does not know the full host conversation cost or whether the final task succeeded. Join the task outcome with receipts from both sides.",
+          "Use this CSV header as a starting point. Leave unknown amounts empty. Missing billing data is not zero cost. Record the price source and date separately."
+        ],
+        "code": "task_id,variant,run_id,completed,quality_label,total_ms,host_input_tokens,host_output_tokens,decision_input_tokens,decision_calls,review_turns,fallback_calls,cache_hits,cost_usd,error",
+        "language": "csv"
+      },
+      {
+        "id": "metrics",
+        "title": "Report the denominator",
+        "paragraphs": [],
+        "table": {
+          "columns": [
+            "Metric",
+            "What to include"
+          ],
+          "rows": [
+            [
+              "Task quality",
+              "Completed tasks and the same acceptance criteria in every variant."
+            ],
+            [
+              "Elapsed time",
+              "The user request through the final result, including tool setup and review. Report median and p95 with sample count."
+            ],
+            [
+              "Cost",
+              "Host calls, decision calls, retries and fallbacks. Separate price estimates from invoice amounts."
+            ],
+            [
+              "Review burden",
+              "Uncertain answers and the human or agent turns needed to resolve them."
+            ],
+            [
+              "Coverage",
+              "The share handled without fallback, plus accuracy within that share."
+            ],
+            [
+              "Failures",
+              "Timeouts, provider errors, invalid responses and canceled work. Keep their usage."
+            ]
+          ]
+        }
+      },
+      {
+        "id": "economics",
+        "title": "Calculate savings for the whole task",
+        "paragraphs": [
+          "Calculate the offloaded task cost as host cost plus decision cost plus review and fallback cost. Compare that total with the baseline task cost. Report the absolute difference and the number of tasks.",
+          "A fixed-price chat subscription does not become cheaper because a separate API used fewer tokens. For that user, the benefit may be shorter waits or better visibility. It may also be no benefit.",
+          "The Engine does not automatically invoke a more expensive model. Include any fallback chosen by the calling agent in your comparison."
+        ]
+      },
+      {
+        "id": "interpret",
+        "title": "Keep the claim as narrow as the evidence",
+        "paragraphs": [
+          "Our batching diagnostic measured two SDK call shapes on 12 synthetic inputs. It measured no host-agent overhead. The broader decision suite reports server processing times, which exclude the network. Those numbers answer different questions.",
+          "Record how many tasks were sampled and how they were selected. Publish unsuccessful variants. If quality falls, fewer tokens alone do not establish a better workflow."
+        ]
+      }
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Design guide. These examples are not independently validated Engine benchmarks."
+  }
+]

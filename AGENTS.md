@@ -10,7 +10,9 @@ Reported is not reproduced. Synthetic and production observations stay distinct.
 Do not call model probabilities calibrated without calibration evidence. Preserve
 negative findings. Never infer end-to-end task success from isolated tool prediction.
 
-Edit catalog.json; run `npm test` then `npm run build` to regenerate the index and
+Edit catalog.json for evidence and guides.json for practical guides. Generated README,
+records and guides come from scripts/build.mjs. Follow WRITING.md for public copy.
+Run `npm test` then `npm run build` to regenerate the index and
 individual records. Live runs are separate, explicit and billable; retain all cases,
 errors and attempts. Record the dataset hash and model/provider identity. Do not tune
 on results and relabel the same cases held-out. No automatic live inference in CI.

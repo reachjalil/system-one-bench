@@ -6,10 +6,10 @@ with what, measured how, and where does it fail?
 
 ## Evidence states
 
-- **reported**: we read the author's primary report; we have not rerun it.
-- **reproduced**: we ran the published method and link our raw results and environment.
-- **first-party**: our own run; explicitly disclose our involvement.
-- **reference**: documented implementation or official guidance without a qualifying result.
+- `reported` means we read the author's primary report; we have not rerun it.
+- `reproduced` means we ran the published method and link our raw results and environment.
+- `first-party` means our own run; explicitly disclose our involvement.
+- `reference` means documented implementation or official guidance without a qualifying result.
 
 Evidence kind is separate: vendor benchmark, independent experiment, synthetic test,
 public-dataset study, production observation or implementation. A large synthetic
@@ -20,7 +20,7 @@ corpus is still synthetic. Star count and an attractive demo are not evaluation.
 1. Link the original report, code and data where available. Pin a source commit or
    dataset revision, add the retrieval date, and identify the author's affiliation.
 2. Record dataset size and construction, model/version/provider, split and tuning,
-   baseline (including a deterministic/no-model baseline), metric definitions, costs,
+   baseline, including a deterministic or no-model baseline, metric definitions, costs,
    latency distribution and error treatment. Use null or explicit unknowns when absent.
 3. Separate measured values, price-derived estimates and marketing claims. Record
    whether routing overhead, host review, fallbacks and downstream inference are included.
@@ -30,7 +30,7 @@ corpus is still synthetic. Star count and an attractive demo are not evaluation.
    Avoid security, approval or production-readiness claims from toy attack sets.
 6. Do not copy upstream reports or redistribute data without permission. Write a short
    original summary and link the original. Linked sources retain their own licenses.
-7. Run `npm test` and `npm run build`. Keep generated records in the same change.
+7. Run `npm run build` and `npm test`. Keep generated records in the same change.
 
 ## Keeping the catalog current
 

@@ -1,30 +1,35 @@
-# From evidence to useful tools
+# Connect evidence to Engine work
 
-These mappings are design interpretations, not claims that every Engine recipe is
-independently benchmarked. Engine recipes use real service contracts and remain editable.
+The existing recipes below use System One service contracts. These mappings are our
+interpretation of related studies. The studies do not validate every recipe.
 
-| Engine recipe / MCP surface | Evidence | Product consequence | Next validation |
+| Available recipe | Evidence | What to try | What to measure next |
 | --- | --- | --- | --- |
-| `next-tool`, `sysone_decide` | [Tool prediction](records/tool-sequence.md) | One finite next-tool choice, with host authority retained | Closed-loop task success and host overhead |
-| `acceptance`, `evidence-check` | [Question decomposition](records/hazard-decomposition.md) | Independent checks with explicit criteria | Representative coding evidence, contradiction and missing-info cases |
-| `taxonomy`, `sysone_tree` | [Choice cap](records/taxonomy-cap.md) | Semantic hierarchy, call budget and abstention | Natural descriptions; deterministic parser baseline |
-| `log-triage`, `sysone_logs` | [Log triage](records/log-triage.md) | Preserve records; expose cache and filtering rate | Actual downstream bill and incident recall |
-| `context-relevance` | [Typed workflows](records/vendor-workflows.md) | Candidate checks before filling host context | Answer quality with uncertain context retained |
-| `clarification`, `intent` | [Workflow design](records/workflow-design.md) | Explicit unknown/review path | Human labels on real consenting-user tasks |
-| `narrator`, `sysone_dialogue` | First-party game integration; no independent experience study | Completed cues and deterministic spacing precede inference | Playthrough and listening review, repeat and interruption rates |
-| `sysone_patterns` | This evidence catalog | Discover compact recipes, then fetch one editable input | Whether discovery reduces host prompt work |
+| `context-relevance`, `rubric` | [Passage reranking](records/passage-reranking.md) | Rate a bounded set of retrieved snippets and retain the originals | Final answers, missing counterevidence and net token cost |
+| `evidence-check`, `acceptance` | [Batch diagnostic](records/batched-evidence.md), [signal controls](records/phishing-signals.md) | Ask independent questions over one tool result | False confirmations, review rate and complete task time |
+| `next-tool` | [Tool prediction](records/tool-sequence.md) | Recommend one available tool after permission filtering | Task completion and extra host turns |
+| `tool-result` | [Failure attribution](records/agent-failure-attribution.md) | Classify a short failure description | Diagnosis accuracy on natural failures |
+| `taxonomy` | [Choice cap](records/taxonomy-cap.md) | Select a category when the answer is not already in a field | Parser baseline, call budget and ambiguous paths |
+| `log-triage` | [Log study](records/log-triage.md) | Rank records for inspection while keeping every original | Incident recall and actual downstream cost |
+| `clarification`, `intent` | [Workflow guidance](records/workflow-design.md) | Identify a missing detail or a known request category | Human labels on representative requests |
+| `narrator` | First-party game integration, no independent experience study | Advise on eligible recorded cues after repeat and timing checks | Playthroughs, interruptions and repeated lines |
 
-## Feature proposals worth investigating
+## Proposals, not current dedicated tools
 
-1. **Context shortlist:** evaluate relevance independently for a bounded set of file
-   snippets, returning keep/review rather than irreversibly deleting context.
-2. **Evidence checklist:** test individual assertions against cited tool outputs,
-   reporting contradictions and unknowns separately.
-3. **Attention queue:** advise whether a background result interrupts the current task,
-   preserving mandatory failure notifications and user preferences.
-4. **Tool choice with availability filters:** deterministic candidate filtering first,
-   finite semantic selection second; never allow the model to invent a tool or permission.
+A context shortlist tool could accept stable snippet IDs and return keep/review lists.
+The current `context-relevance` recipe evaluates candidate text; it is not a complete
+retrieval pipeline. The next experiment should include omitted counterevidence and
+measure the answer after selection.
 
-These proposals can start as `sysone_decide` recipes. Dedicated tools should earn
-extra API surface through representative evaluations and repeated user demand.
-Automatic expensive-model switching is not a default: the routing ablation shows why.
+A trace triage tool could return an error category and candidate step from a failed
+run. The attribution study supports testing that idea. Its low joint accuracy argues
+for review before any repair. The current `tool-result` recipe is much smaller than
+that proposed trace reader.
+
+An evidence checklist could collect claim IDs, source IDs and separate support and
+contradiction signals. Today, `evidence-check` handles a short supplied claim. It does
+not retrieve missing sources or certify a statement.
+
+Add a dedicated tool only when the recipe has repeated users and a measured benefit.
+The [routing ablation](records/routing-ablation.md) is a reason to compare no-model
+alternatives before adding automatic model selection.

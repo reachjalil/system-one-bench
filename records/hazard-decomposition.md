@@ -2,15 +2,17 @@
 
 reported · synthetic test · reviewed 2026-09-20
 
-**Affiliation:** AnshChoudhary; external project author; not rerun here.
+AnshChoudhary; external project author; not rerun here.
 
-## Decision and method
+## What was tested
 
 Flag hazards in proposed agent tool calls before execution.
 
 600 authored records, 320 held out; full hazard battery compared with a broad dangerousness question.
 
-**Baseline:** Single generic hazard question.
+## Baseline
+
+Single generic hazard question.
 
 ## Finding
 
@@ -23,11 +25,11 @@ Decomposed questions sharply reduced false blocks on hard negatives in this corp
 
 Author-designed synthetic attacks are not evidence of adversarial security in production. Approval friction must be measured separately.
 
-## Implication for tools (our interpretation)
+## What we would test in System One
 
 Use independent, explicit checks as advisory signals. Keep authorization, execution safeguards and human approval outside Jev.
 
-Engine patterns: `change-scope`, `acceptance`, `evidence-check`
+This feature recommendation is our interpretation. Related Engine patterns: `change-scope`, `acceptance`, `evidence-check`.
 
 ## Primary sources
 

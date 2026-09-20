@@ -9,7 +9,7 @@
     "workload": "Select a model for a user query.",
     "method": "Author reports offline scoring on 5,835 held-out LLMRouterBench queries across 13 models; answers are precomputed.",
     "baseline": "Best fixed model and identical retrieval router without Jev.",
-    "finding": "Retrieval routing improved the frontier, but the no-Jev ablation matched it. This does not establish that the Jev difficulty signal caused savings.",
+    "finding": "Retrieval routing improved the accuracy-cost tradeoff, but the no-Jev ablation matched it. This does not establish that the Jev difficulty signal caused savings.",
     "limitations": "Cached downstream answers; no live end-to-end answer latency. Reported cost uses benchmark assumptions.",
     "implication": "Before adding a model router, compare a fixed default and a no-Jev retrieval policy. Ship a router only if the added signal earns its overhead.",
     "metrics": [
@@ -26,7 +26,7 @@
         "url": "https://github.com/TokenTrim/jev-routing-experiment/blob/bf088479c73220102f8bacd6b69d34021ca34e2e/README.md"
       }
     ],
-    "headline": "No-Jev ablation matched the hybrid frontier.",
+    "headline": "No-Jev ablation matched the hybrid result.",
     "repo": "TokenTrim/jev-routing-experiment",
     "revision": "bf088479c73220102f8bacd6b69d34021ca34e2e"
   },
@@ -173,7 +173,7 @@
     "method": "Vendor launch comparison of typed Jev evaluations and chat-model decision wrappers.",
     "baseline": "Vendor-selected chat-model baselines.",
     "finding": "The launch report supports evaluating typed decisions as a separate operation. Its headline speed and cost ratios are vendor-specific workload results.",
-    "limitations": "Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent’s total cost or time. Pricing and Gateway promotions change.",
+    "limitations": "Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent's total cost or time. Pricing and Gateway promotions change.",
     "implication": "Batch independent questions over shared evidence. Measure host tool overhead and final outcomes before promising savings.",
     "metrics": [
       "Vendor advertises up to 193.6× speed and 444.6× cost improvements in its evaluation; not System One Engine results."
@@ -220,6 +220,10 @@
       {
         "label": "Official guidance",
         "url": "https://vercel.com/i/when-to-use-jev"
+      },
+      {
+        "label": "TypeSafe documentation on independent questions",
+        "url": "https://docs.typesafe.ai/patterns/fan-out"
       }
     ],
     "headline": "Specify what uncertain and mixed cases should do."
@@ -257,5 +261,142 @@
       }
     ],
     "headline": "Fewer calls and tokens, with one extra error in this small test."
+  },
+  {
+    "id": "passage-reranking",
+    "title": "Rank retrieved passages before reading them",
+    "status": "reported",
+    "kind": "public-dataset study",
+    "affiliation": "Aness Belbati; external author. We reviewed the report and did not rerun it.",
+    "reviewed": "2026-09-20",
+    "workload": "Reorder retrieved passages by relevance to a question.",
+    "method": "Eight English datasets, 1,617 scored queries. Models see the same 30 BM25 candidates, each truncated to 2,000 characters. Jev 1.13.0 uses a four-level rubric.",
+    "baseline": "BM25, Cohere Rerank 4 Pro and other published rerankers.",
+    "finding": "Dataset-weighted nDCG@10 was 0.692 for Jev and 0.691 for Cohere Pro. The difference interval crosses zero. Weighting each query equally favors Cohere.",
+    "limitations": "Scoring excludes queries without a relevant candidate. Providers use different routes. Times are means of dataset medians, not pooled medians. These rankings do not measure final answer quality.",
+    "implication": "Test a context shortlist with original snippets still available. System One allows eight questions per request, so this 30-question setup needs adaptation and a new evaluation.",
+    "metrics": [
+      "Jev minus Cohere nDCG@10: 0.001; 95% interval -0.009 to 0.012.",
+      "Query-weighted nDCG@10: Jev 0.738; Cohere 0.756.",
+      "Mean of dataset median request times: Jev 422 ms; Cohere 844 ms."
+    ],
+    "patterns": [
+      "context-relevance",
+      "rubric"
+    ],
+    "headline": "Ranking gains depend on the dataset and how scores are averaged.",
+    "repo": "anessbelbati/jev-rerank-bench",
+    "revision": "cd9a35b22aeb4187334f7018a0ee1960a7470586",
+    "sources": [
+      {
+        "label": "Pinned method, results and limits",
+        "url": "https://github.com/anessbelbati/jev-rerank-bench/blob/cd9a35b22aeb4187334f7018a0ee1960a7470586/README.md"
+      }
+    ]
+  },
+  {
+    "id": "agent-failure-attribution",
+    "title": "Find the likely failure in an agent trace",
+    "status": "reported",
+    "kind": "public-dataset study",
+    "affiliation": "TokenTrim; external author. We reviewed the report and did not rerun it.",
+    "reviewed": "2026-09-20",
+    "workload": "Identify the responsible agent, step and error category in a failed run.",
+    "method": "6,257 text traces from Who&When Pro. Jev answers three choice questions. The author uses the official scorer and compares with published paper baselines.",
+    "baseline": "GPT-5.4 results from the original paper, not a fresh matched API run.",
+    "finding": "Reported error-category macro-F1 was 23.7 for Jev and 15.3 for GPT-5.4 on the 100-point scale. Joint accuracy was 31.3% and 21.3%.",
+    "limitations": "Failures are injected. Jev selects enumerated agents and steps while paper baselines generate them. Mode-confidence ECE is 0.287. No latency comparison is reported.",
+    "implication": "Try advisory trace triage with a fixed error taxonomy. A low joint success rate does not justify automatic repair or blame assignment.",
+    "metrics": [
+      "Error-category macro-F1: Jev 23.7; paper GPT-5.4 baseline 15.3.",
+      "All three labels correct: Jev 31.3%; paper GPT-5.4 baseline 21.3%.",
+      "Reported Jev input-price estimate: $1.28 for 6,257 traces."
+    ],
+    "patterns": [
+      "tool-result",
+      "evidence-check"
+    ],
+    "headline": "Trace classification is promising, but most full diagnoses were wrong.",
+    "repo": "TokenTrim/jev-agent-failure-benchmark",
+    "revision": "4d46af795a4a4409940a65857da73e45abaea2db",
+    "sources": [
+      {
+        "label": "Pinned method",
+        "url": "https://github.com/TokenTrim/jev-agent-failure-benchmark/blob/4d46af795a4a4409940a65857da73e45abaea2db/README.md"
+      },
+      {
+        "label": "Pinned results and comparison limits",
+        "url": "https://github.com/TokenTrim/jev-agent-failure-benchmark/blob/4d46af795a4a4409940a65857da73e45abaea2db/RESULTS.md"
+      }
+    ]
+  },
+  {
+    "id": "phishing-signals",
+    "title": "Separate signals from a final verdict",
+    "status": "reported",
+    "kind": "synthetic-data study",
+    "affiliation": "anisselbd; external author. We reviewed the report and did not rerun it.",
+    "reviewed": "2026-09-20",
+    "workload": "Classify phishing emails and extract five risk signals.",
+    "method": "2,000 PhishNChips emails with generated bodies and sourced URLs. Jev 1.13.0 and Claude Haiku 4.5 answer verdict and signal questions. Later controls fit on 1,000 emails and test on the other 1,000.",
+    "baseline": "Haiku verdicts, identical Haiku signal questions and URL/sender rules.",
+    "finding": "The initial Jev verdict lost to Haiku. On the split evaluation, regression over Jev signals beat the rule baseline. Its accuracy difference from Haiku signals did not reach statistical significance.",
+    "limitations": "Signal design used knowledge of the dataset taxonomy. These synthetic messages do not establish protection for a real inbox. Accuracy and AUROC favor different signal models.",
+    "implication": "Test separate, observable properties before a broad verdict. Compare the same decomposition in every model and include a rule baseline.",
+    "metrics": [
+      "Initial verdict accuracy: Jev 62.6%; Haiku 81.3%.",
+      "Split-test accuracy: Jev signal regression 95.0%; Haiku signal regression 93.2%; rule 91.8%.",
+      "Jev versus Haiku signal-regression accuracy: McNemar p = 0.063."
+    ],
+    "patterns": [
+      "evidence-check",
+      "acceptance"
+    ],
+    "headline": "Question design helped, but a simple rule was a strong baseline.",
+    "repo": "anisselbd/jev-phishing-bench",
+    "revision": "1d56e8c64d029a9554a0874e2ef2901ed196e230",
+    "sources": [
+      {
+        "label": "Pinned comparison and added controls",
+        "url": "https://github.com/anisselbd/jev-phishing-bench/blob/1d56e8c64d029a9554a0874e2ef2901ed196e230/README.md"
+      }
+    ]
+  },
+  {
+    "id": "decision-suite",
+    "title": "Compare decision types before choosing a model",
+    "status": "reported",
+    "kind": "public-dataset and synthetic study",
+    "affiliation": "Omar Mujahid states no affiliation with TypeSafe. We reviewed the report and did not rerun it.",
+    "reviewed": "2026-09-20",
+    "workload": "Classification, passage ranking, extraction by selection and short reasoning questions.",
+    "method": "49 tasks, 8,225 items. Jev 1.13.0 versus GPT-5.6 Luna with reasoning off or low. Seeded public-data samples and code-generated probes; most tasks have 200 items.",
+    "baseline": "The better Luna setting for each task; no deterministic baseline across the suite.",
+    "finding": "Jev led or tied on 42 tasks by the report's rule. Only seven task leads had non-overlapping 95% bootstrap intervals, six for Jev and one for Luna.",
+    "limitations": "Public-data contamination is unknown. Reported time uses server headers and excludes network and agent overhead. Counting and 77-label classification exposed weaknesses.",
+    "implication": "Match an evaluation to the question type. Do not turn aggregate task wins into a claim that an entire coding agent is faster or more accurate.",
+    "metrics": [
+      "Reported median server time: Jev 105 ms; Luna 710 ms; Luna-low 808 ms.",
+      "Banking77 accuracy: Jev 0.815; Luna 0.870.",
+      "Counting accuracy: Jev 0.867; Luna-low 0.993."
+    ],
+    "patterns": [
+      "intent",
+      "context-relevance",
+      "rubric"
+    ],
+    "headline": "A broad comparison supports task-specific testing, not one universal winner.",
+    "repo": "OmarMujahid/jev-decision-bench",
+    "revision": "0883fa781729ab571005253f6b288ec67f49dd29",
+    "sources": [
+      {
+        "label": "Pinned method and caveats",
+        "url": "https://github.com/OmarMujahid/jev-decision-bench/blob/0883fa781729ab571005253f6b288ec67f49dd29/README.md"
+      },
+      {
+        "label": "Pinned task scores and intervals",
+        "url": "https://github.com/OmarMujahid/jev-decision-bench/blob/0883fa781729ab571005253f6b288ec67f49dd29/RESULTS.md"
+      }
+    ]
   }
 ]

@@ -2,15 +2,17 @@
 
 first-party · synthetic test · reviewed 2026-09-20
 
-**Affiliation:** Jalil Laaraichi / jev-tree; same maintainer as System One Engine.
+Jalil Laaraichi / jev-tree; same maintainer as System One Engine.
 
-## Decision and method
+## What was tested
 
 Classify an incident into one of 320 authored categories.
 
 180 synthetic cases; authored tree, automatic partitioning, truncated flat choice and keyword baseline. Existing recorded results inspected.
 
-**Baseline:** Deterministic keyword extraction and first-255 truncation.
+## Baseline
+
+Deterministic keyword extraction and first-255 truncation.
 
 ## Finding
 
@@ -23,11 +25,11 @@ Hierarchical selection reached categories excluded by truncation. The determinis
 
 Synthetic fields are easy to parse. Accuracy is not evidence of production robustness or calibrated confidence. Three tree steps add calls.
 
-## Implication for tools (our interpretation)
+## What we would test in System One
 
 Use semantic categories when a flat list is too large. First check whether structured input already identifies the answer without inference.
 
-Engine patterns: `taxonomy`
+This feature recommendation is our interpretation. Related Engine patterns: `taxonomy`.
 
 ## Primary sources
 

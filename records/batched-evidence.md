@@ -2,15 +2,17 @@
 
 first-party · synthetic test · reviewed 2026-09-20
 
-**Affiliation:** System One Bench / Jalil Laaraichi; same maintainer as System One Engine.
+System One Bench / Jalil Laaraichi; same maintainer as System One Engine.
 
-## Decision and method
+## What was tested
 
 Check whether short tool evidence supports or explicitly contradicts a claim.
 
 12 authored cases, 24 labels; batch versus two sequential SDK requests; alternating order, no cache or retries. Labels and corpus hash precede the first run. Live Jev via Vercel Gateway.
 
-**Baseline:** The same questions in separate sequential requests; no expensive host-model comparison.
+## Baseline
+
+The same questions in separate sequential requests; no expensive host-model comparison.
 
 ## Finding
 
@@ -24,11 +26,11 @@ Batching reduced calls, input tokens and median case latency, with one additiona
 
 Tiny synthetic diagnostic, not a held-out production benchmark. No host-agent tool overhead, final task success or invoice savings measured. One run is not a stable latency distribution.
 
-## Implication for tools (our interpretation)
+## What we would test in System One
 
 Batch independent checks when evidence is shared, but evaluate quality as well as request count. Preserve uncertainty and inspect contradictions rather than blindly accepting the cheaper configuration.
 
-Engine patterns: `acceptance`, `evidence-check`
+This feature recommendation is our interpretation. Related Engine patterns: `acceptance`, `evidence-check`.
 
 ## Primary sources
 
