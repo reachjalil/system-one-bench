@@ -1,0 +1,8 @@
+[
+  {"id":"new-light","name":"Alpha","mode":"light","initial":"","initialMode":"dark","goal":"Create and save a preview named Alpha in light mode. Stop when its saved record is visible."},
+  {"id":"new-contrast","name":"Reading room","mode":"contrast","initial":"","initialMode":"dark","goal":"Save the Reading room preview with High contrast. Stop after the saved record confirms both values."},
+  {"id":"keep-mode","name":"Night desk","mode":"dark","initial":"","initialMode":"dark","goal":"Create a preview called Night desk. Keep the current Dark mode and save it once."},
+  {"id":"prefilled","name":"Harbor","mode":"light","initial":"Harbor","initialMode":"light","goal":"The form already contains Harbor with Light mode. Save that preview without changing its fields."},
+  {"id":"replace-name","name":"Quiet corner","mode":"contrast","initial":"Old name","initialMode":"contrast","goal":"Replace Old name with Quiet corner. Keep High contrast mode. Save the updated preview."},
+  {"id":"change-mode","name":"Day desk","mode":"light","initial":"Day desk","initialMode":"dark","goal":"Change the Day desk preview from Dark to Light and save it. Keep its name."}
+]
