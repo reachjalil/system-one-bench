@@ -26,6 +26,7 @@ Potential value is our editorial priority for individual agent users. Evidence c
 | [Choose a category in a large catalog](theses/taxonomy-selection.md) | medium | low |
 | [Prioritize logs for deeper analysis](theses/log-selection.md) | low | low |
 | [Choose a recorded response or silence](theses/dialogue-selection.md) | medium | low |
+| [Delegate routine browser decisions](theses/browser-control.md) | high | low |
 
 Each thesis has an illustrative situation, a proposed input and result, supporting and conflicting sources, and a test plan. [Rating method](METHODOLOGY.md#value-and-confidence) · [Test backlog](TEST_PLAN.md).
 
@@ -42,7 +43,7 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 
 ## Evidence library
 
-20 reviewed records. Scores from different tasks are not one leaderboard.
+23 reviewed records. Scores from different tasks are not one leaderboard.
 
 | Scenario | Evidence | Finding |
 | --- | --- | --- |
@@ -66,6 +67,9 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 | [Choose diagnostic tests and review repair evidence](records/sre-decision-support.md) | reported · application experiment | More attempts passed in one small study; some incidents regressed. |
 | [TypeSafe examples for decisions over supplied text](records/official-cookbooks.md) | reference · official examples | Official examples show how to frame the question; each adaptation needs testing. |
 | [Parable dialogue advice chose silence in every first-run case](records/parable-dialogue.md) | first-party · synthetic test | Conservative silence is not evidence of better dialogue. |
+| [Browser actions from observed control IDs](records/browser-indexed-controls.md) | reported · independent experiment | Less browser overhead helped a small matched comparison. |
+| [Mac actions from OCR and accessibility](records/mac-screen-decisions.md) | reported · independent experiment | Structured screen extraction is part of the workload. |
+| [Shared page state improved our first browser diagnostic](records/sysone-browser-fixture.md) | first-party · synthetic test | Four of six saved states after a shared-input fix. |
 
 ## Practical guides
 
@@ -77,6 +81,7 @@ do not claim that the example recipes reproduce the upstream results.
 - [Choose the next available tool](guides/choose-a-tool.md). Give an agent a tool recommendation from a list it can actually use.
 - [Write a question Jev can evaluate](guides/write-a-question.md). Define the evidence, possible answers and review policy before adjusting a threshold.
 - [Measure whether offloading helps](guides/measure-a-workflow.md). Compare completed tasks with and without System One, including review and fallback costs.
+- [Give an agent a short browser subtask](guides/delegate-browser-steps.md). Use current control IDs, caller-supplied text and final-screen review with the System One browser companion.
 
 [Feature evidence map](FEATURE_MAP.md) · [Metric definitions](METHODOLOGY.md) · [Review history](REVIEW_LOG.md)
 

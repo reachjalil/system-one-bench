@@ -1,0 +1,1441 @@
+{
+  "at": "2026-09-20T08:04:12.804Z",
+  "type": "first-party development diagnostic",
+  "provider": "Vercel AI Gateway through System One Cloud",
+  "model": "typesafe-ai/jev",
+  "clientRevision": "5b733ca1abb448495aa892239b86d25a6cbb90a1",
+  "casesSha256": "d8c0f9385a568fffa5a0e36a077e878b6c06f7e20e7ae4e72db7d02a9c98d331",
+  "fixtureSha256": "147b74b30a81fc1bf935709ceaac5b546c57b4264012f0145a8a08805355b355",
+  "method": "Six original form tasks, one attempt per arm per case. Alternating order. Fresh browser per attempt. Task clock includes observation, Jev calls, actions, final screenshot and server-record verification; browser startup/navigation excluded. Baseline uses exact known fixture IDs and skips already matching fields. No host-agent reasoning or final visual review is timed. Model prompts are unchanged after this first run.",
+  "runs": [
+    {
+      "case": "new-light",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "setupMs": 413,
+      "saved": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 145
+    },
+    {
+      "case": "new-light",
+      "arm": "jev",
+      "expected": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "setupMs": 466,
+      "trace": {
+        "stop": "verify_completion",
+        "verified": false,
+        "elapsedMs": 2347,
+        "decisionRequests": 4,
+        "actionsExecuted": 3,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "e11cc0b5-7bf5-4a8a-912f-d54e34c4a7f1",
+            "status": "proposed",
+            "elapsedMs": 704,
+            "requestId": "6b639dde-7b7b-44ad-beb3-0f6b3247ca7c",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1275,
+              "outputTokens": 176,
+              "cached": false,
+              "latencyMs": 372
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "type",
+                  "probabilities": {
+                    "done": 0,
+                    "type": 0.97,
+                    "select": 0.03,
+                    "review": 0,
+                    "wait": 0,
+                    "scroll_up": 0,
+                    "click": 0,
+                    "scroll_down": 0
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.84,
+                    "none": 0.15,
+                    "t4": 0.01
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "t1",
+                  "probabilities": {
+                    "t1": 1,
+                    "none": 0
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "t2",
+                  "probabilities": {
+                    "none": 0,
+                    "t2": 1
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": ""
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 0.97,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "de4d587d-4041-4c80-b1ed-a9e53ae8b1bc",
+            "status": "proposed",
+            "elapsedMs": 622,
+            "requestId": "a7364229-ca8b-405d-bc55-32018d1def09",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1312,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 570
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "select",
+                  "probabilities": {
+                    "scroll_down": 0,
+                    "type": 0,
+                    "done": 0,
+                    "select": 0.98,
+                    "scroll_up": 0,
+                    "click": 0.01,
+                    "wait": 0,
+                    "review": 0.01
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t4": 0,
+                    "t3": 0.68,
+                    "none": 0.32
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0.01,
+                    "none": 0.99
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "t2",
+                  "probabilities": {
+                    "none": 0,
+                    "t2": 1
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "select",
+              "target": "t2",
+              "control": {
+                "id": "t2",
+                "kind": "select",
+                "bounds": {
+                  "x": 179,
+                  "y": 365,
+                  "width": 149,
+                  "height": 48
+                },
+                "role": "select",
+                "name": "Mode",
+                "value": "dark",
+                "options": [
+                  {
+                    "value": "dark",
+                    "label": "Dark"
+                  },
+                  {
+                    "value": "light",
+                    "label": "Light"
+                  },
+                  {
+                    "value": "contrast",
+                    "label": "High contrast"
+                  }
+                ]
+              },
+              "needs": "The calling agent must choose an observed option value."
+            },
+            "probabilities": {
+              "operation": 0.98,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 3,
+            "observationId": "5393beee-87c8-42ff-a56a-1022f1e040ac",
+            "status": "proposed",
+            "elapsedMs": 355,
+            "requestId": "50076b0c-7dab-4569-9342-cfdae5b0d07c",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1348,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 302
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "click",
+                  "probabilities": {
+                    "review": 0.01,
+                    "select": 0,
+                    "scroll_down": 0.01,
+                    "type": 0,
+                    "scroll_up": 0,
+                    "click": 0.97,
+                    "wait": 0,
+                    "done": 0.01
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.99,
+                    "none": 0.01,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 1,
+                    "t1": 0
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.99,
+                    "t2": 0.01
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.97,
+              "target": 0.99
+            },
+            "executed": true
+          },
+          {
+            "step": 4,
+            "observationId": "6c465f84-274f-4fc8-b698-b9f3d60ae0c0",
+            "status": "proposed",
+            "elapsedMs": 380,
+            "requestId": "0268b0cd-eabf-4af8-a6bb-69c6684ffbf0",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1390,
+              "outputTokens": 173,
+              "cached": false,
+              "latencyMs": 330
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "done",
+                  "probabilities": {
+                    "click": 0.01,
+                    "wait": 0.06,
+                    "done": 0.78,
+                    "select": 0,
+                    "type": 0,
+                    "scroll_up": 0,
+                    "review": 0.13,
+                    "scroll_down": 0.02
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t3": 0.25,
+                    "none": 0.75,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.99,
+                    "t1": 0.01
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.01,
+                    "none": 0.99
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "done"
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nSaved preview: Alpha; mode: light.\nThe saved record appears here after you choose Save preview.",
+      "saved": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 2348
+    },
+    {
+      "case": "new-contrast",
+      "arm": "jev",
+      "expected": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "setupMs": 343,
+      "trace": {
+        "stop": "uncertain",
+        "verified": false,
+        "elapsedMs": 380,
+        "decisionRequests": 1,
+        "actionsExecuted": 0,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "c8e907e0-c87b-4d7c-9cb4-55bec252b8cf",
+            "status": "proposed",
+            "elapsedMs": 342,
+            "requestId": "61f0d304-e767-4c32-8313-e47a7b669594",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1275,
+              "outputTokens": 176,
+              "cached": false,
+              "latencyMs": 292
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "type",
+                  "probabilities": {
+                    "select": 0.25,
+                    "done": 0,
+                    "scroll_up": 0,
+                    "review": 0.01,
+                    "click": 0.01,
+                    "type": 0.73,
+                    "scroll_down": 0,
+                    "wait": 0
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t4": 0.01,
+                    "none": 0.23,
+                    "t3": 0.76
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "t1",
+                  "probabilities": {
+                    "t1": 0.98,
+                    "none": 0.02
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "t2",
+                  "probabilities": {
+                    "t2": 1,
+                    "none": 0
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": ""
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 0.73,
+              "target": 0.98
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 381
+    },
+    {
+      "case": "new-contrast",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "setupMs": 394,
+      "saved": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 127
+    },
+    {
+      "case": "keep-mode",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "setupMs": 381,
+      "saved": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 126
+    },
+    {
+      "case": "keep-mode",
+      "arm": "jev",
+      "expected": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "setupMs": 421,
+      "trace": {
+        "stop": "verify_completion",
+        "verified": false,
+        "elapsedMs": 1347,
+        "decisionRequests": 3,
+        "actionsExecuted": 2,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "1427900a-7f43-4a24-8c61-f35aafcfb669",
+            "status": "proposed",
+            "elapsedMs": 378,
+            "requestId": "8428b5b4-b359-4db4-8ab7-ff0643ca83a6",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1274,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 330
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "type",
+                  "probabilities": {
+                    "scroll_down": 0,
+                    "type": 1,
+                    "click": 0,
+                    "select": 0,
+                    "done": 0,
+                    "review": 0,
+                    "scroll_up": 0,
+                    "wait": 0
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "none": 0.11,
+                    "t4": 0,
+                    "t3": 0.89
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "t1",
+                  "probabilities": {
+                    "none": 0,
+                    "t1": 1
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.99,
+                    "t2": 0.01
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": ""
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 1,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "05f84902-d45c-43ec-972c-fda98ba474e7",
+            "status": "proposed",
+            "elapsedMs": 392,
+            "requestId": "45714782-b734-4cd9-99f5-2154b00a6a2e",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1313,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 334
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "click",
+                  "probabilities": {
+                    "review": 0.01,
+                    "click": 0.91,
+                    "scroll_up": 0,
+                    "wait": 0,
+                    "scroll_down": 0,
+                    "done": 0.07,
+                    "type": 0,
+                    "select": 0.01
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "none": 0.01,
+                    "t3": 0.99,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.98,
+                    "t1": 0.02
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.01,
+                    "none": 0.99
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.91,
+              "target": 0.99
+            },
+            "executed": true
+          },
+          {
+            "step": 3,
+            "observationId": "f2eeafbc-7421-4b1b-b2b2-2edabe938229",
+            "status": "proposed",
+            "elapsedMs": 370,
+            "requestId": "64a0b0c6-0cda-42a1-ad46-45ec286957e2",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1356,
+              "outputTokens": 173,
+              "cached": false,
+              "latencyMs": 323
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "done",
+                  "probabilities": {
+                    "review": 0.11,
+                    "select": 0,
+                    "scroll_up": 0,
+                    "wait": 0.02,
+                    "scroll_down": 0,
+                    "done": 0.83,
+                    "click": 0.03,
+                    "type": 0.01
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t3": 0.44,
+                    "none": 0.56,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0.01,
+                    "none": 0.99
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.01,
+                    "none": 0.99
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "done"
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nSaved preview: Night desk; mode: dark.\nThe saved record appears here after you choose Save preview.",
+      "saved": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 1348
+    },
+    {
+      "case": "prefilled",
+      "arm": "jev",
+      "expected": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "setupMs": 391,
+      "trace": {
+        "stop": "verify_completion",
+        "verified": false,
+        "elapsedMs": 729,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "3cd35713-7d6c-4e52-aa51-4a20a9751c19",
+            "status": "proposed",
+            "elapsedMs": 297,
+            "requestId": "f427abd9-0245-4c61-a8b8-9a1d68b76ad7",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1275,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 244
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "click",
+                  "probabilities": {
+                    "scroll_up": 0,
+                    "type": 0,
+                    "wait": 0,
+                    "done": 0.01,
+                    "select": 0,
+                    "review": 0,
+                    "click": 0.99,
+                    "scroll_down": 0
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t4": 0,
+                    "none": 0,
+                    "t3": 1
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0,
+                    "none": 1
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 1,
+                    "t2": 0
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.99,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "ed6149fa-5d54-41ee-8cda-c5100362d7b5",
+            "status": "proposed",
+            "elapsedMs": 322,
+            "requestId": "15a1dbe5-4022-44e3-ae3a-7780fa14fed3",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1318,
+              "outputTokens": 173,
+              "cached": false,
+              "latencyMs": 271
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "done",
+                  "probabilities": {
+                    "review": 0.09,
+                    "scroll_up": 0,
+                    "scroll_down": 0,
+                    "select": 0,
+                    "done": 0.84,
+                    "type": 0,
+                    "wait": 0.02,
+                    "click": 0.05
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.65,
+                    "t3": 0.35,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0,
+                    "none": 1
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.99,
+                    "t2": 0.01
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "done"
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nSaved preview: Harbor; mode: light.\nThe saved record appears here after you choose Save preview.",
+      "saved": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 729
+    },
+    {
+      "case": "prefilled",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "setupMs": 343,
+      "saved": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 131
+    },
+    {
+      "case": "replace-name",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "setupMs": 403,
+      "saved": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 130
+    },
+    {
+      "case": "replace-name",
+      "arm": "jev",
+      "expected": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "setupMs": 453,
+      "trace": {
+        "stop": "verify_completion",
+        "verified": false,
+        "elapsedMs": 1241,
+        "decisionRequests": 3,
+        "actionsExecuted": 2,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "b5ee149d-65ab-4ab7-b26c-b59c46a6bde5",
+            "status": "proposed",
+            "elapsedMs": 354,
+            "requestId": "74692271-852e-4e7f-b3e0-5eba68f8d2e5",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1276,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 299
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "type",
+                  "probabilities": {
+                    "scroll_down": 0,
+                    "select": 0,
+                    "review": 0,
+                    "wait": 0,
+                    "done": 0,
+                    "scroll_up": 0,
+                    "click": 0,
+                    "type": 1
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.91,
+                    "t4": 0,
+                    "none": 0.09
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "t1",
+                  "probabilities": {
+                    "t1": 1,
+                    "none": 0
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.01,
+                    "none": 0.99
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": "Old name"
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 1,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "0c221989-e5dc-49cd-82ec-b6341533dd53",
+            "status": "proposed",
+            "elapsedMs": 396,
+            "requestId": "39c4b4ec-55d2-40b0-abfc-cccbc87fdbaa",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1313,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 342
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "click",
+                  "probabilities": {
+                    "type": 0.01,
+                    "review": 0.02,
+                    "scroll_down": 0,
+                    "select": 0.01,
+                    "done": 0.08,
+                    "wait": 0,
+                    "scroll_up": 0,
+                    "click": 0.88
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.98,
+                    "none": 0.02,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0.05,
+                    "none": 0.95
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.03,
+                    "none": 0.97
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.88,
+              "target": 0.98
+            },
+            "executed": true
+          },
+          {
+            "step": 3,
+            "observationId": "f7f41341-8b56-4960-8ef7-353c6b90d11e",
+            "status": "proposed",
+            "elapsedMs": 293,
+            "requestId": "7b3d5c44-715f-404f-b128-afc2a8618f42",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1356,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 245
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "done",
+                  "probabilities": {
+                    "scroll_down": 0,
+                    "review": 0.11,
+                    "type": 0.01,
+                    "select": 0.01,
+                    "done": 0.81,
+                    "wait": 0.02,
+                    "scroll_up": 0,
+                    "click": 0.03
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.51,
+                    "none": 0.49,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0.03,
+                    "none": 0.97
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.01,
+                    "none": 0.99
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "done"
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nSaved preview: Quiet corner; mode: contrast.\nThe saved record appears here after you choose Save preview.",
+      "saved": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 1242
+    },
+    {
+      "case": "change-mode",
+      "arm": "jev",
+      "expected": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "setupMs": 342,
+      "trace": {
+        "stop": "uncertain",
+        "verified": false,
+        "elapsedMs": 947,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "94e6d66a-ae61-4a59-8045-706fca9c1d84",
+            "status": "proposed",
+            "elapsedMs": 328,
+            "requestId": "0973b8d9-503a-4b73-b5a2-52d487b4e28a",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1276,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 277
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "select",
+                  "probabilities": {
+                    "click": 0.01,
+                    "type": 0,
+                    "wait": 0,
+                    "scroll_down": 0,
+                    "select": 0.98,
+                    "scroll_up": 0,
+                    "done": 0,
+                    "review": 0.01
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "t3": 0.7,
+                    "t4": 0,
+                    "none": 0.3
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "none": 0.99,
+                    "t1": 0.01
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "t2",
+                  "probabilities": {
+                    "t2": 1,
+                    "none": 0
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "select",
+              "target": "t2",
+              "control": {
+                "id": "t2",
+                "kind": "select",
+                "bounds": {
+                  "x": 179,
+                  "y": 365,
+                  "width": 149,
+                  "height": 48
+                },
+                "role": "select",
+                "name": "Mode",
+                "value": "dark",
+                "options": [
+                  {
+                    "value": "dark",
+                    "label": "Dark"
+                  },
+                  {
+                    "value": "light",
+                    "label": "Light"
+                  },
+                  {
+                    "value": "contrast",
+                    "label": "High contrast"
+                  }
+                ]
+              },
+              "needs": "The calling agent must choose an observed option value."
+            },
+            "probabilities": {
+              "operation": 0.98,
+              "target": 1
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "b04ad1d4-d790-4456-8d37-896951d5881b",
+            "status": "proposed",
+            "elapsedMs": 501,
+            "requestId": "b646110b-7e00-4997-8e9b-75961cb85b10",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1313,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 455
+            },
+            "answers": {
+              "answers": {
+                "operation": {
+                  "type": "choice",
+                  "choice": "click",
+                  "probabilities": {
+                    "type": 0,
+                    "select": 0.05,
+                    "click": 0.66,
+                    "review": 0.09,
+                    "wait": 0,
+                    "scroll_up": 0,
+                    "scroll_down": 0,
+                    "done": 0.2
+                  }
+                },
+                "click_target": {
+                  "type": "choice",
+                  "choice": "t3",
+                  "probabilities": {
+                    "none": 0.1,
+                    "t3": 0.9,
+                    "t4": 0
+                  }
+                },
+                "type_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t1": 0.01,
+                    "none": 0.99
+                  }
+                },
+                "select_target": {
+                  "type": "choice",
+                  "choice": "none",
+                  "probabilities": {
+                    "t2": 0.08,
+                    "none": 0.92
+                  }
+                }
+              },
+              "status": "evaluated"
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.66,
+              "target": 0.9
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 948
+    },
+    {
+      "case": "change-mode",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "setupMs": 378,
+      "saved": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 132
+    }
+  ]
+}

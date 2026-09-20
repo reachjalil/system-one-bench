@@ -532,5 +532,58 @@
       "decision": "Keep narration optional. Require no repeat or stale-playback regression and a clear preference in reviewed playthroughs.",
       "report": "findings/dialogue-selection/README.md"
     }
+  },
+  {
+    "id": "browser-control",
+    "title": "Delegate routine browser decisions",
+    "claim": "With Jev, an agent can choose the next action from a fresh list of visible browser controls and review the resulting screen.",
+    "example": {
+      "situation": "You ask your coding agent to save a light-mode preview named Alpha in a web app.",
+      "input": "The agent supplies the goal and exact field values. A local companion supplies visible controls, their current values and a screenshot for the agent.",
+      "result": "Jev recommends type, select or click with an observed target. The companion can perform a short authorized sequence and return the final screenshot.",
+      "label": "Illustrative workflow. The linked original fixture records successful attempts and uncertainty stops."
+    },
+    "value": {
+      "level": "high",
+      "reason": "Repeated interface choices may fit a small decision model and avoid a full main-agent turn for each click. The end-to-end benefit still needs measurement."
+    },
+    "confidence": {
+      "level": "low",
+      "reason": "External implementations and our six-task development diagnostic establish feasibility. They do not establish reliable completion or savings across unfamiliar websites."
+    },
+    "evidence": [
+      "browser-indexed-controls",
+      "mac-screen-decisions",
+      "sysone-browser-fixture"
+    ],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "reviewed": "2026-09-20",
+    "test": {
+      "status": "planned",
+      "dataset": "At least 40 unfamiliar tasks across original forms, filters, item lists and changing layouts. Freeze tasks and verifiers before testing. Include missing controls, loading, duplicate labels and misleading page instructions.",
+      "baselines": [
+        "Calling agent with its normal browser tools",
+        "Calling agent with System One single-step advice",
+        "Calling agent with the bounded companion loop",
+        "Known deterministic scripts where applicable"
+      ],
+      "metrics": [
+        "Independently verified task completion",
+        "Unintended writes and duplicate submissions",
+        "Agent escalations and manual interventions",
+        "Complete task median and p95 including startup and host review",
+        "All model usage, provider errors and stopped attempts",
+        "Screenshot and text volume sent to each model"
+      ],
+      "decision": "Keep the companion opt-in. Require no unintended writes in the reviewed suite and an equal-quality complete-workflow benefit before a savings claim. Publish all attempts and confidence intervals.",
+      "report": "findings/browser-companion/README.md"
+    }
   }
 ]

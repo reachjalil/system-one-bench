@@ -1,0 +1,555 @@
+{
+  "at": "2026-09-20T08:01:57.157Z",
+  "type": "first-party development diagnostic",
+  "provider": "Vercel AI Gateway through System One Cloud",
+  "model": "typesafe-ai/jev",
+  "clientRevision": "f707f526326caa5a88ac4c9f7c50864bf34ff6af",
+  "casesSha256": "d8c0f9385a568fffa5a0e36a077e878b6c06f7e20e7ae4e72db7d02a9c98d331",
+  "fixtureSha256": "147b74b30a81fc1bf935709ceaac5b546c57b4264012f0145a8a08805355b355",
+  "method": "Six original form tasks, one attempt per arm per case. Alternating order. Fresh browser per attempt. Task clock includes observation, Jev calls, actions, final screenshot and server-record verification; browser startup/navigation excluded. Baseline uses exact known fixture IDs and skips already matching fields. No host-agent reasoning or final visual review is timed. Model prompts are unchanged after this first run.",
+  "runs": [
+    {
+      "case": "new-light",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "setupMs": 561,
+      "saved": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 140
+    },
+    {
+      "case": "new-light",
+      "arm": "jev",
+      "expected": {
+        "name": "Alpha",
+        "mode": "light"
+      },
+      "setupMs": 406,
+      "trace": {
+        "stop": "uncertain",
+        "verified": false,
+        "elapsedMs": 1305,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "030feafb-a7df-43fb-b589-cca29abfa495",
+            "status": "proposed",
+            "elapsedMs": 823,
+            "requestId": "57c6ba4b-0343-4d1e-b12b-a7547ce651e2",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1094,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 559
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": ""
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 0.97,
+              "target": 0.95
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "07c8197b-9901-4e93-abd1-38793024fa19",
+            "status": "proposed",
+            "elapsedMs": 348,
+            "requestId": "3a1cceff-9db5-48d6-8d0c-5b857cb45b01",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1131,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 264
+            },
+            "proposal": {
+              "operation": "select",
+              "target": "t2",
+              "control": {
+                "id": "t2",
+                "kind": "select",
+                "bounds": {
+                  "x": 179,
+                  "y": 365,
+                  "width": 149,
+                  "height": 48
+                },
+                "role": "select",
+                "name": "Mode",
+                "value": "dark",
+                "options": [
+                  {
+                    "value": "dark",
+                    "label": "Dark"
+                  },
+                  {
+                    "value": "light",
+                    "label": "Light"
+                  },
+                  {
+                    "value": "contrast",
+                    "label": "High contrast"
+                  }
+                ]
+              },
+              "needs": "The calling agent must choose an observed option value."
+            },
+            "probabilities": {
+              "operation": 0.51,
+              "target": 0.7
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 1307
+    },
+    {
+      "case": "new-contrast",
+      "arm": "jev",
+      "expected": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "setupMs": 406,
+      "trace": {
+        "stop": "stopped_on_error",
+        "verified": false,
+        "elapsedMs": 8101,
+        "decisionRequests": 1,
+        "actionsExecuted": 0,
+        "steps": [
+          {
+            "error": "System One request failed."
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 8102
+    },
+    {
+      "case": "new-contrast",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "setupMs": 370,
+      "saved": {
+        "name": "Reading room",
+        "mode": "contrast"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 126
+    },
+    {
+      "case": "keep-mode",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "setupMs": 457,
+      "saved": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 139
+    },
+    {
+      "case": "keep-mode",
+      "arm": "jev",
+      "expected": {
+        "name": "Night desk",
+        "mode": "dark"
+      },
+      "setupMs": 549,
+      "trace": {
+        "stop": "uncertain",
+        "verified": false,
+        "elapsedMs": 826,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "209c59b3-61dd-4470-a580-e06aa3ae1edf",
+            "status": "proposed",
+            "elapsedMs": 385,
+            "requestId": "d1c6587e-7406-4f9b-b12e-b35f890bef45",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1093,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 319
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": ""
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 0.97,
+              "target": 0.9
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "87fd4caf-38f5-44a6-ab58-c530f685c0f3",
+            "status": "proposed",
+            "elapsedMs": 298,
+            "requestId": "e2fef23a-2a7a-4c56-a082-7d5d86ed38dd",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1131,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 234
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.81,
+              "target": 0.74
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 826
+    },
+    {
+      "case": "prefilled",
+      "arm": "jev",
+      "expected": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "setupMs": 418,
+      "trace": {
+        "stop": "uncertain",
+        "verified": false,
+        "elapsedMs": 864,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "0dd9028a-86c8-46f8-bcc1-578e28e75a39",
+            "status": "proposed",
+            "elapsedMs": 350,
+            "requestId": "86cf8113-a511-477a-b615-65383b4f995b",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1093,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 294
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.91,
+              "target": 0.9
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "ae7d80db-63df-4173-8650-6f260066d8ec",
+            "status": "proposed",
+            "elapsedMs": 394,
+            "requestId": "8358cf89-d8e3-44c6-83fd-bb02132708c2",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1136,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 341
+            },
+            "proposal": {
+              "operation": "click",
+              "target": "t3",
+              "control": {
+                "id": "t3",
+                "kind": "click",
+                "bounds": {
+                  "x": 179,
+                  "y": 429,
+                  "width": 127,
+                  "height": 46
+                },
+                "role": "button",
+                "name": "Save preview",
+                "value": ""
+              }
+            },
+            "probabilities": {
+              "operation": 0.66,
+              "target": 0.72
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nSaved preview: Harbor; mode: light.\nThe saved record appears here after you choose Save preview.",
+      "saved": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 864
+    },
+    {
+      "case": "prefilled",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "setupMs": 424,
+      "saved": {
+        "name": "Harbor",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 127
+    },
+    {
+      "case": "replace-name",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "setupMs": 450,
+      "saved": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 130
+    },
+    {
+      "case": "replace-name",
+      "arm": "jev",
+      "expected": {
+        "name": "Quiet corner",
+        "mode": "contrast"
+      },
+      "setupMs": 545,
+      "trace": {
+        "stop": "review",
+        "verified": false,
+        "elapsedMs": 931,
+        "decisionRequests": 2,
+        "actionsExecuted": 1,
+        "steps": [
+          {
+            "step": 1,
+            "observationId": "ff025718-d122-4705-8fb8-91f23f38f3fa",
+            "status": "proposed",
+            "elapsedMs": 423,
+            "requestId": "259c7022-051a-43f7-9a81-f97a3b4a832e",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1094,
+              "outputTokens": 175,
+              "cached": false,
+              "latencyMs": 361
+            },
+            "proposal": {
+              "operation": "type",
+              "target": "t1",
+              "control": {
+                "id": "t1",
+                "kind": "type",
+                "bounds": {
+                  "x": 179,
+                  "y": 275,
+                  "width": 213,
+                  "height": 46
+                },
+                "role": "input",
+                "name": "Project name",
+                "value": "Old name"
+              },
+              "needs": "The calling agent must supply the exact text."
+            },
+            "probabilities": {
+              "operation": 0.93,
+              "target": 0.94
+            },
+            "executed": true
+          },
+          {
+            "step": 2,
+            "observationId": "d563c7ac-622a-43d6-975e-803f76008c46",
+            "status": "review",
+            "requestId": "9906ce4c-6c9d-4e84-b6af-7685f17ed6e7",
+            "meta": {
+              "model": "vercel:typesafe-ai/jev",
+              "calls": 1,
+              "inputTokens": 1131,
+              "outputTokens": 174,
+              "cached": false,
+              "latencyMs": 315
+            }
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 931
+    },
+    {
+      "case": "change-mode",
+      "arm": "jev",
+      "expected": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "setupMs": 404,
+      "trace": {
+        "stop": "stopped_on_error",
+        "verified": false,
+        "elapsedMs": 457,
+        "decisionRequests": 1,
+        "actionsExecuted": 0,
+        "steps": [
+          {
+            "error": "System One request failed."
+          }
+        ],
+        "next": "Inspect the final screenshot and evidence. The calling agent must verify the requested outcome. No automatic retry.",
+        "policy": "The probability threshold only stops uncertain proposals. It is not measured accuracy or action authorization."
+      },
+      "finalText": "SYSTEM ONE / ORIGINAL TEST FIXTURE\nPreview workbench\nCreate a preview. This fixture does not send a message, publish a site or charge an account.\nProject name\nMode\nSave preview\nClear form\nSaved preview\nNo preview saved.\nThe saved record appears here after you choose Save preview.",
+      "saved": null,
+      "writes": 0,
+      "passed": false,
+      "wallMs": 457
+    },
+    {
+      "case": "change-mode",
+      "arm": "deterministic",
+      "expected": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "setupMs": 477,
+      "saved": {
+        "name": "Day desk",
+        "mode": "light"
+      },
+      "writes": 1,
+      "passed": true,
+      "wallMs": 131
+    }
+  ]
+}

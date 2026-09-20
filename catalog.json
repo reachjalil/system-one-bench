@@ -196,7 +196,7 @@
     "limitations": "Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent's total cost or time. Pricing and Gateway promotions change.",
     "implication": "Batch independent questions over shared evidence. Measure host tool overhead and final outcomes before promising savings.",
     "metrics": [
-      "Vendor advertises up to 193.6\u00d7 speed and 444.6\u00d7 cost improvements in its evaluation; not System One Engine results."
+      "Vendor advertises up to 193.6× speed and 444.6× cost improvements in its evaluation; not System One Engine results."
     ],
     "patterns": [
       "acceptance",
@@ -736,6 +736,122 @@
     "confidence": {
       "level": "low",
       "reason": "The receipts establish this small development run. They do not establish improved pacing, useful positive selection or end-to-end savings."
+    }
+  },
+  {
+    "id": "browser-indexed-controls",
+    "title": "Browser actions from observed control IDs",
+    "status": "reported",
+    "kind": "independent experiment",
+    "affiliation": "Browser Use repository authors; external implementation, not rerun here.",
+    "reviewed": "2026-09-20",
+    "workload": "Complete one Google Flights search.",
+    "method": "Three alternating pairs compare two runtimes using Jev and the same text helper. A separate checker verifies results.",
+    "baseline": "The earlier runtime, also using Jev. This is not a frontier-agent comparison.",
+    "finding": "The optimized reader reduced median task time and browser protocol calls on this one task.",
+    "limitations": "Only three pairs. Initial navigation and independent verification are outside the task clock. Full task dollar cost is not reported.",
+    "implication": "Our inference: batch operation and target selection over current control state, then verify the actual result.",
+    "metrics": [
+      "Reported medians: 9.450s versus 7.092s; 3/3 verified in each arm.",
+      "Median browser protocol calls: 1,092 versus 101."
+    ],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "sources": [
+      {
+        "label": "Pinned method and measurements",
+        "url": "https://github.com/browser-use/jev-ultrafast/blob/1231850a0bf1a0c0341fe408ef1668dbbfdfac46/docs/performance.md"
+      }
+    ],
+    "headline": "Less browser overhead helped a small matched comparison.",
+    "repo": "browser-use/jev-ultrafast",
+    "revision": "1231850a0bf1a0c0341fe408ef1668dbbfdfac46",
+    "confidence": {
+      "level": "moderate",
+      "reason": "The comparison documents its method and limits. It does not establish performance across unfamiliar sites."
+    }
+  },
+  {
+    "id": "mac-screen-decisions",
+    "title": "Mac actions from OCR and accessibility",
+    "status": "reported",
+    "kind": "independent experiment",
+    "affiliation": "Aaron Levin / awlevin; external project author, not rerun here.",
+    "reviewed": "2026-09-20",
+    "workload": "Choose a next Mac action from screen text and accessibility controls.",
+    "method": "The author compares one decision for the same screenshot and goal; OCR and accessibility build Jev inputs.",
+    "baseline": "A frontier model reading the screenshot, with different preprocessing.",
+    "finding": "The report shows a much cheaper individual decision. It also exposes the work needed to supply structured screen state.",
+    "limitations": "One decision does not measure complete-task reliability. Jev receives deterministic date processing; the comparator interprets pixels. Twelve-step costs are extrapolations.",
+    "implication": "Our inference: a desktop adapter needs a local observation layer. Direct image input to Jev is not demonstrated.",
+    "metrics": [
+      "Reported decision cost: about $0.0002 versus $0.032.",
+      "Reported full step: about 1.5s with OCR versus 5.5s."
+    ],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "sources": [
+      {
+        "label": "Pinned implementation and author report",
+        "url": "https://github.com/awlevin/typesafe-computer-use/blob/cc7b5066ae1a07b5e3182e8f87a9b5b6dfdcffc1/README.md"
+      }
+    ],
+    "headline": "Structured screen extraction is part of the workload.",
+    "repo": "awlevin/typesafe-computer-use",
+    "revision": "cc7b5066ae1a07b5e3182e8f87a9b5b6dfdcffc1",
+    "confidence": {
+      "level": "low",
+      "reason": "The implementation and one reported comparison motivate a test. They do not establish general cost or success rates."
+    }
+  },
+  {
+    "id": "sysone-browser-fixture",
+    "title": "Shared page state improved our first browser diagnostic",
+    "status": "first-party",
+    "kind": "synthetic test",
+    "affiliation": "Jalil Laaraichi / System One; same maintainer as the product and companion.",
+    "reviewed": "2026-09-20",
+    "workload": "Save exactly one preview with a requested name and mode on an original fixture.",
+    "method": "Six tasks per arm, alternating order, fresh browsers and server-record verification. After the first run, we fixed shared control state and reran the same tasks. Both runs are retained.",
+    "baseline": "An exact script with known fixture IDs; it skips fields that already match. No frontier-agent baseline.",
+    "finding": "The first Jev run reached one correct saved state. The changed-code rerun reached four. Two rerun tasks stopped for uncertainty; the exact script reached six in both runs.",
+    "limitations": "Development fixtures reused after a prompt/input fix. No held-out result, general reliability, host review time or complete-agent savings claim. Two first-run service errors remain failures.",
+    "implication": "Supply current field values to every batched question. Keep an agent-visible stop and independent outcome check. Prefer code for known workflows.",
+    "metrics": [
+      "Correct saved records: first Jev run 1/6; rerun 4/6; deterministic script 6/6 in each run.",
+      "Rerun: 15 requests, 19,670 reported input tokens, 2,615 output tokens.",
+      "Rerun all-attempt median: 1,095ms; exact script: 130.5ms. Browser setup and host review excluded."
+    ],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "sources": [
+      {
+        "label": "All attempts, method and next test",
+        "url": "https://github.com/reachjalil/system-one-bench/tree/main/findings/browser-companion"
+      }
+    ],
+    "headline": "Four of six saved states after a shared-input fix.",
+    "confidence": {
+      "level": "low",
+      "reason": "The first-party development diagnostic shows a concrete integration and failure modes. It leaves general task quality and savings untested."
     }
   }
 ]
