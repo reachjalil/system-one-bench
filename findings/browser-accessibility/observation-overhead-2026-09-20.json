@@ -1,0 +1,56 @@
+{
+  "type": "first-party local microbenchmark",
+  "before": {
+    "at": "2026-09-20T11:23:22.035Z",
+    "revision": "4bee23ca1e74685efc3a86eecba1fe5a16729baa",
+    "browser": "Chrome/153.0.8010.50",
+    "node": "v26.4.0",
+    "method": "15 repeated screenshot-free observations of the original preview form on a fresh headless Chrome session. No provider calls.",
+    "milliseconds": [
+      9.819416000000047,
+      2.740791999999942,
+      2.645291000000043,
+      1.608082999999965,
+      6.759416999999985,
+      6.436625000000049,
+      1.4185830000000124,
+      1.1693749999999454,
+      1.3960419999999658,
+      0.9760829999999032,
+      1.0957499999999527,
+      0.7572500000001128,
+      0.7564579999999523,
+      0.8640829999999369,
+      0.9508339999999862
+    ]
+  },
+  "after": {
+    "at": "2026-09-20T11:40:38.978Z",
+    "browser": "Chrome/153.0.8010.50",
+    "node": "v26.4.0",
+    "method": "15 repeated screenshot-free observations of the original preview form on a fresh headless Chrome session. No provider calls. AX enrichment and DOM freshness check enabled.",
+    "milliseconds": [
+      16.829792000000054,
+      2.50979099999995,
+      2.7119579999999814,
+      4.531166999999982,
+      2.423750000000041,
+      2.2950839999999744,
+      2.8255420000000413,
+      2.7639580000000024,
+      2.205208000000084,
+      2.4837499999999864,
+      3.12929100000008,
+      2.5062920000000304,
+      2.7439170000000104,
+      2.7142089999999826,
+      2.30758400000002
+    ],
+    "revision": "b4c7253cdcbdbf7ea43d94d7b6510112097a0788"
+  },
+  "medianMs": {
+    "before": 1.3960419999999658,
+    "after": 2.7119579999999814
+  },
+  "limitations": "15 observations per version on one small original form. Sequential measurements, mostly warm, no randomized crossover. Screenshot, current-state checks before actions, provider, browser startup and main-agent review excluded. Not a general latency or savings result."
+}

@@ -347,7 +347,9 @@
     "evidence": [
       "browser-indexed-controls",
       "mac-screen-decisions",
-      "sysone-browser-fixture"
+      "sysone-browser-fixture",
+      "jev-computer-input-contract",
+      "sysone-accessibility-decisions"
     ],
     "reviewed": "2026-09-20",
     "status": "Preview integration guide. Six original fixture tasks do not establish general browser reliability or savings.",
@@ -356,8 +358,16 @@
         "id": "connect",
         "title": "Use a scoped engine connection",
         "paragraphs": [
-          "The public sysone 0.6.0 companion runs as a local stdio MCP server with npx sysone computer --connection /private/path/agent.json. The connection can point to your invited cloud account or your local engine. It needs the decide service.",
+          "The public sysone 0.6.0 source preview adds the computer companion. Until npm publication completes, build the public repository and run node dist/cli.js computer --connection /private/path/agent.json. The connection can point to an invited cloud account or a local engine and needs the decide service.",
           "Chrome or Chromium and Node 22.18+ must be installed. The helper starts a fresh browser when the agent calls sysone_computer_start. It does not attach to existing tabs. Web-only chat clients cannot launch this local helper."
+        ]
+      },
+      {
+        "id": "doctor",
+        "title": "Check what the adapter can read",
+        "paragraphs": [
+          "Run sysone computer doctor without a token. It checks the installed browser, a temporary profile, computed accessibility and a screenshot on its own test page. No model call is made. Browser operation needs Node 22.18+ and Chrome or Chromium, but no Mac desktop permission.",
+          "The optional --desktop flag adds an experimental Mac AX reader and permission check. It requires Apple Command Line Tools and Accessibility permission for the launching host or helper. It does not request Screen Recording or perform desktop input. Our first native fixture check did not produce a usable focused window; successful native control extraction remains unverified."
         ]
       },
       {
@@ -365,7 +375,8 @@
         "title": "Keep the screen and its controls together",
         "paragraphs": [
           "sysone_computer_observe returns a JPEG to the agent and a list of current control IDs. sysone_computer_decide sends the goal, visible text and current control values to Jev through your engine. Jev receives no pixels.",
-          "For a single action, the agent reviews the proposal and calls sysone_computer_act. Exact text comes from the agent. The companion rejects stale observations and covered or incompatible controls."
+          "For a single action, the agent reviews the proposal and calls sysone_computer_act. Exact text comes from the agent. The companion rejects stale observations and covered or incompatible controls.",
+          "Chrome computes control names, roles, descriptions, required/invalid/checked states and named group context. These attach to the retained DOM nodes, including open shadow roots. A changed AX name invalidates the old observation. The state marks accessibility fallback and truncation."
         ]
       },
       {
@@ -383,8 +394,66 @@
         "title": "Count the work that returns to the agent",
         "paragraphs": [
           "Our first original fixture run reached one correct saved state out of six. Sharing current control values across all questions improved the rerun to four out of six. Two stopped for uncertainty. The known script completed all six faster.",
+          "A separate accessibility diagnostic got all six expected next-action choices correct, with one request per case and no executed actions. That result does not replace the earlier full-task failures or establish savings.",
           "These reused development tasks do not establish a general success rate. Compare unfamiliar tasks with the main agent, including review, failed attempts and fallback work. Prefer a direct API or known script when it already solves the task.",
-          "The shipped companion handles common visible HTML controls on one origin. It does not support noVNC, desktop apps, canvas, frames, shadow roots, passwords, uploads or complex keyboard widgets. Those require separate adapters."
+          "The browser handles common visible HTML controls and open shadow roots on one origin. Hosted noVNC, native desktop execution, canvas, frames, closed shadow roots, passwords, uploads and complex keyboard widgets remain unsupported."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "prepare-computer-state",
+    "title": "Give Jev useful accessibility evidence",
+    "summary": "Use labels, group context and exact field facts to turn a screen into a small decision.",
+    "audience": "Agent and computer-use adapter developers",
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "evidence": [
+      "jev-computer-input-contract",
+      "sysone-accessibility-decisions",
+      "mac-screen-decisions"
+    ],
+    "reviewed": "2026-09-20",
+    "status": "Implementation guide with a six-choice diagnostic. Broad task and savings validation remain planned.",
+    "sections": [
+      {
+        "id": "example",
+        "title": "Distinguish two Save buttons",
+        "paragraphs": [
+          "An agent is editing draft settings. The page has two buttons named Save, one in Draft settings and one in Live settings. Supply the group name with each observed ID so Jev can choose the intended target.",
+          "System One reads that context from Chrome accessibility and keeps the real DOM node behind each ID. The model does not invent a selector. The example is a decision input, not authority to submit a form."
+        ],
+        "code": "{\n  \"goal\": \"Save the draft settings. Leave the live settings alone.\",\n  \"controls\": [\n    {\n      \"id\": \"t1\",\n      \"role\": \"button\",\n      \"name\": \"Save\",\n      \"context\": [\n        \"Draft settings\"\n      ]\n    },\n    {\n      \"id\": \"t2\",\n      \"role\": \"button\",\n      \"name\": \"Save\",\n      \"context\": [\n        \"Live settings\"\n      ]\n    }\n  ]\n}",
+        "language": "json"
+      },
+      {
+        "id": "shared",
+        "title": "Give every question the same required evidence",
+        "paragraphs": [
+          "Operation and target questions run independently. Put current field values, expected values, group names and useful status messages in shared state. Do not assume one question can see another answer.",
+          "Compute exact equality, required-field emptiness and scroll limits in code. Preserve whitespace in field values. Mark truncated values as unknown for equality rather than comparing their prefixes."
+        ]
+      },
+      {
+        "id": "bounds",
+        "title": "Keep the observation tied to the action",
+        "paragraphs": [
+          "Read only the task scope and cap the candidates. Preserve whether a label came from Chrome accessibility or a DOM fallback. A missing or ambiguous target should lead to review.",
+          "Recheck node identity, visible state, destinations and accessibility properties before acting. The original screen and a model completion signal are not proof that the requested result was saved."
+        ]
+      },
+      {
+        "id": "measure",
+        "title": "Test the value of the extra context",
+        "paragraphs": [
+          "Our six original cases produced six correct next-action choices with AX context. We did not run a paired ablation, so the result does not isolate its causal benefit.",
+          "Next, compare identical frozen tasks with and without AX enrichment, then compare complete tasks against the calling agent. Count observation, decisions, actions, review, failures and escalations. Preserve negative runs and use independently verified saved state."
         ]
       }
     ]

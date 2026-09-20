@@ -196,7 +196,7 @@
     "limitations": "Vendor-authored comparison, selected tasks and wrappers. Reported ratios do not predict a coding agent's total cost or time. Pricing and Gateway promotions change.",
     "implication": "Batch independent questions over shared evidence. Measure host tool overhead and final outcomes before promising savings.",
     "metrics": [
-      "Vendor advertises up to 193.6× speed and 444.6× cost improvements in its evaluation; not System One Engine results."
+      "Vendor advertises up to 193.6\u00d7 speed and 444.6\u00d7 cost improvements in its evaluation; not System One Engine results."
     ],
     "patterns": [
       "acceptance",
@@ -852,6 +852,99 @@
     "confidence": {
       "level": "low",
       "reason": "The first-party development diagnostic shows a concrete integration and failure modes. It leaves general task quality and savings untested."
+    }
+  },
+  {
+    "id": "jev-computer-input-contract",
+    "title": "What Jev needs from a computer-use adapter",
+    "status": "reference",
+    "kind": "implementation",
+    "affiliation": "TypeSafe vendor documentation; Chrome DevTools and Apple platform APIs. System One mapping is our interpretation.",
+    "reviewed": "2026-09-20",
+    "workload": "Turn a screen observation into a bounded next-action question.",
+    "method": "Review the official state, fan-out and Jev 1.13 limitation documentation alongside browser and Mac accessibility APIs.",
+    "baseline": "No comparative experiment in this reference record.",
+    "finding": "Jev currently accepts text. Questions in a batch evaluate independently. A computer-use adapter must supply the relevant labels, values and relationships to every question, with exact checks implemented in code.",
+    "limitations": "Documentation describes the model contract and known weaknesses, not reliable task completion. Accessibility coverage depends on the application. Page content can influence the model despite being labeled untrusted.",
+    "implication": "Our inference: bind computed AX names to observed nodes, include group and field state, filter irrelevant text, keep exact comparisons outside the model and retain a review option.",
+    "metrics": [],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "sources": [
+      {
+        "label": "TypeSafe state and supported modalities",
+        "url": "https://docs.typesafe.ai/concepts/state"
+      },
+      {
+        "label": "TypeSafe independent fan-out questions",
+        "url": "https://docs.typesafe.ai/patterns/fan-out"
+      },
+      {
+        "label": "Jev 1.13 known failure modes, reviewed September 17",
+        "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13"
+      },
+      {
+        "label": "Chrome accessibility protocol",
+        "url": "https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/"
+      },
+      {
+        "label": "Apple accessibility model",
+        "url": "https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXmodel.html"
+      }
+    ],
+    "headline": "Supply explicit accessible controls and shared state.",
+    "confidence": {
+      "level": "moderate",
+      "reason": "The input contract is documented by its provider. The benefit of a particular adapter still needs a controlled task comparison."
+    }
+  },
+  {
+    "id": "sysone-accessibility-decisions",
+    "title": "Six accessibility-informed next-action choices",
+    "status": "first-party",
+    "kind": "synthetic test",
+    "affiliation": "Jalil Laaraichi / System One; product and benchmark share a maintainer.",
+    "reviewed": "2026-09-20",
+    "workload": "Choose one operation and exact control from six original browser observations.",
+    "method": "Labels and target oracle committed before inference. One request per case, no retries or actions. An unexposed fixture marker verifies the exact target. Cases cover duplicate labels, computed icon names, invalid fields, shadow controls, checked state and loading.",
+    "baseline": "A known fixture marker and labeled operation supply an exact deterministic reference. No frontier-agent baseline or AX ablation.",
+    "finding": "Jev selected the expected operation and target in all six cases. Every choice exceeded the existing 0.8 stopping threshold. This verifies those choices only; no action or complete task was tested in this run.",
+    "limitations": "Six hand-authored development cases. Not held-out quality, calibration, end-to-end reliability or savings. The separate native Mac fixture check returned focused_window_unavailable despite a granted permission result. Native control extraction remains unverified.",
+    "implication": "Keep computed labels and states in the browser adapter. Test paired AX removal and unfamiliar full tasks before claiming that accessibility improves completion or reduces agent cost.",
+    "metrics": [
+      "Expected operation and target: 6/6; one attempt per case; zero actions executed.",
+      "Six provider calls; 5,267 reported input tokens and 524 output tokens.",
+      "Median decision request round trip: 343.5ms; median engine-reported latency: 292ms. Observation and host review excluded.",
+      "Separate small-form observation median: 1.40ms before AX, 2.71ms after; 15 sequential observations per version."
+    ],
+    "patterns": [
+      "computer-next-action",
+      "computer-target",
+      "computer-form-ready",
+      "computer-progress",
+      "computer-outcome",
+      "computer-recovery"
+    ],
+    "sources": [
+      {
+        "label": "All inputs, answers, method, observation timings and native limitation",
+        "url": "https://github.com/reachjalil/system-one-bench/tree/main/findings/browser-accessibility"
+      },
+      {
+        "label": "Labels and oracle committed before the run",
+        "url": "https://github.com/reachjalil/system-one-bench/tree/aa19fa2/benchmarks/browser-accessibility"
+      }
+    ],
+    "headline": "Six correct choices; complete-task benefit still untested.",
+    "confidence": {
+      "level": "low",
+      "reason": "A reproducible first-party diagnostic establishes six concrete choices. It does not establish transfer to other sites or a causal advantage from AX."
     }
   }
 ]

@@ -43,7 +43,7 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 
 ## Evidence library
 
-23 reviewed records. Scores from different tasks are not one leaderboard.
+25 reviewed records. Scores from different tasks are not one leaderboard.
 
 | Scenario | Evidence | Finding |
 | --- | --- | --- |
@@ -70,6 +70,8 @@ Each thesis has an illustrative situation, a proposed input and result, supporti
 | [Browser actions from observed control IDs](records/browser-indexed-controls.md) | reported · independent experiment | Less browser overhead helped a small matched comparison. |
 | [Mac actions from OCR and accessibility](records/mac-screen-decisions.md) | reported · independent experiment | Structured screen extraction is part of the workload. |
 | [Shared page state improved our first browser diagnostic](records/sysone-browser-fixture.md) | first-party · synthetic test | Four of six saved states after a shared-input fix. |
+| [What Jev needs from a computer-use adapter](records/jev-computer-input-contract.md) | reference · implementation | Supply explicit accessible controls and shared state. |
+| [Six accessibility-informed next-action choices](records/sysone-accessibility-decisions.md) | first-party · synthetic test | Six correct choices; complete-task benefit still untested. |
 
 ## Practical guides
 
@@ -82,6 +84,7 @@ do not claim that the example recipes reproduce the upstream results.
 - [Write a question Jev can evaluate](guides/write-a-question.md). Define the evidence, possible answers and review policy before adjusting a threshold.
 - [Measure whether offloading helps](guides/measure-a-workflow.md). Compare completed tasks with and without System One, including review and fallback costs.
 - [Give an agent a short browser subtask](guides/delegate-browser-steps.md). Use current control IDs, caller-supplied text and final-screen review with the System One browser companion.
+- [Give Jev useful accessibility evidence](guides/prepare-computer-state.md). Use labels, group context and exact field facts to turn a screen into a small decision.
 
 [Feature evidence map](FEATURE_MAP.md) · [Metric definitions](METHODOLOGY.md) · [Review history](REVIEW_LOG.md)
 

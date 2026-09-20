@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-20T11:45:51.320Z",
+  "type": "first-party native adapter integration check",
+  "passed": false,
+  "platform": "darwin",
+  "permission": "granted",
+  "observation": {
+    "bundleId": "com.systemoneengine.accessibility-fixture",
+    "error": "focused_window_unavailable",
+    "next": "The requested app did not expose a focused AXWindow. No application or menu tree was read. Focus its window and try again.",
+    "pid": 58653
+  },
+  "limitation": "A usable focused window and controls have not been established by this attempt."
+}

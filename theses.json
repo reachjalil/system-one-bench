@@ -539,7 +539,7 @@
     "claim": "With Jev, an agent can choose the next action from a fresh list of visible browser controls and review the resulting screen.",
     "example": {
       "situation": "You ask your coding agent to save a light-mode preview named Alpha in a web app.",
-      "input": "The agent supplies the goal and exact field values. A local companion supplies visible controls, their current values and a screenshot for the agent.",
+      "input": "The agent supplies the goal and exact values. The companion supplies Chrome-computed names, roles, group context, field states and a screenshot for the agent.",
       "result": "Jev recommends type, select or click with an observed target. The companion can perform a short authorized sequence and return the final screenshot.",
       "label": "Illustrative workflow. The linked original fixture records successful attempts and uncertainty stops."
     },
@@ -554,7 +554,9 @@
     "evidence": [
       "browser-indexed-controls",
       "mac-screen-decisions",
-      "sysone-browser-fixture"
+      "sysone-browser-fixture",
+      "jev-computer-input-contract",
+      "sysone-accessibility-decisions"
     ],
     "patterns": [
       "computer-next-action",
@@ -572,7 +574,8 @@
         "Calling agent with its normal browser tools",
         "Calling agent with System One single-step advice",
         "Calling agent with the bounded companion loop",
-        "Known deterministic scripts where applicable"
+        "Known deterministic scripts where applicable",
+        "Paired identical browser tasks with and without AX enrichment"
       ],
       "metrics": [
         "Independently verified task completion",

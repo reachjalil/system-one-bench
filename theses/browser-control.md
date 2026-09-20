@@ -8,7 +8,7 @@ Reviewed 2026-09-20. This is a bounded capability thesis, not a promise of gener
 
 You ask your coding agent to save a light-mode preview named Alpha in a web app.
 
-The agent supplies the goal and exact field values. A local companion supplies visible controls, their current values and a screenshot for the agent.
+The agent supplies the goal and exact values. The companion supplies Chrome-computed names, roles, group context, field states and a screenshot for the agent.
 
 Jev recommends type, select or click with an observed target. The companion can perform a short authorized sequence and return the final screenshot.
 
@@ -29,6 +29,8 @@ These are editorial ratings. [How we assign them](../METHODOLOGY.md#value-and-co
 - [Browser actions from observed control IDs](../records/browser-indexed-controls.md). reported. Less browser overhead helped a small matched comparison.
 - [Mac actions from OCR and accessibility](../records/mac-screen-decisions.md). reported. Structured screen extraction is part of the workload.
 - [Shared page state improved our first browser diagnostic](../records/sysone-browser-fixture.md). first-party. Four of six saved states after a shared-input fix.
+- [What Jev needs from a computer-use adapter](../records/jev-computer-input-contract.md). reference. Supply explicit accessible controls and shared state.
+- [Six accessibility-informed next-action choices](../records/sysone-accessibility-decisions.md). first-party. Six correct choices; complete-task benefit still untested.
 
 ## Test plan
 
@@ -42,6 +44,7 @@ Compare against:
 - Calling agent with System One single-step advice
 - Calling agent with the bounded companion loop
 - Known deterministic scripts where applicable
+- Paired identical browser tasks with and without AX enrichment
 
 Measure:
 
