@@ -18,6 +18,7 @@ before using the provider. Keep proposed protocols separate from existing result
 | [Choose a category in a large catalog](theses/taxonomy-selection.md#test-plan) | medium | low | planned |
 | [Prioritize logs for deeper analysis](theses/log-selection.md#test-plan) | low | low | planned |
 | [Choose a recorded response or silence](theses/dialogue-selection.md#test-plan) | medium | low | planned |
+| [Delegate routine browser decisions](theses/browser-control.md#test-plan) | high | low | planned |
 
 ## Record an outcome
 
