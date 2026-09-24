@@ -26,7 +26,7 @@
         "title": "Try the existing recipe",
         "paragraphs": [
           "Start System One with npx sysone. Add your Vercel AI Gateway key in Settings. In Library, open Check a claim, replace the example and run it.",
-          "For an agent, fetch the evidence-check recipe with sysone_patterns and send the edited input to sysone_decide. This example is a valid decide request. It is a teaching example, not a new benchmark."
+          "For the hosted MCP, run evidence-check with sysone_run and your evidence. The JSON below is an equivalent custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup. This is a teaching example, not a new benchmark."
         ],
         "code": "{\n  \"state\": \"Claim: the new release is live. Evidence: the build passed, but deployment stopped because the destination project was not selected.\",\n  \"questions\": {\n    \"supported\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does the supplied evidence establish that the new release is live?\"\n    },\n    \"contradicted\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does the supplied evidence explicitly contradict the claim that the new release is live?\"\n    }\n  }\n}",
         "language": "json"
@@ -78,7 +78,7 @@
         "id": "try",
         "title": "Score a few passages at a time",
         "paragraphs": [
-          "Open Keep useful context in Library. Supply the task and candidate text. For an MCP client, fetch context-relevance with sysone_patterns and evaluate it with sysone_decide.",
+          "Open Keep useful context in Library. Supply the task and candidate text. For the hosted MCP, run context-relevance with sysone_run and the passages you supply. The JSON below is a custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup.",
           "For several passages, give each a stable ID and its own question in one request. The current Engine accepts at most eight questions. The published 30-passage study is evidence for an experiment, not a result reproduced by this smaller recipe."
         ],
         "code": "{\n  \"state\": \"Task: explain why a form submits twice. Passage A, SubmitButton.tsx: the button calls submitOrder in onClick. Passage B, CheckoutForm.tsx: the enclosing form also calls submitOrder in onSubmit. Passage C, styles.css: button border colors.\",\n  \"questions\": {\n    \"passageA\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage A provide evidence that helps explain the duplicate submission?\"\n    },\n    \"passageB\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage B provide evidence that helps explain the duplicate submission?\"\n    },\n    \"passageC\": {\n      \"type\": \"boolean\",\n      \"instructions\": \"Does passage C provide evidence that helps explain the duplicate submission?\"\n    }\n  }\n}",
@@ -130,7 +130,7 @@
         "id": "try",
         "title": "Include a way to decline the choice",
         "paragraphs": [
-          "Open Choose the next tool in Library. An agent can retrieve next-tool with sysone_patterns and evaluate it with sysone_decide.",
+          "Open Choose the next tool in Library. For the hosted MCP, run next-tool with sysone_run and the available choices. The JSON below is a custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup.",
           "Use IDs the caller already knows. Describe what each tool does and add a review option. The example chooses a tool category, not a command or its arguments."
         ],
         "code": "{\n  \"state\": \"Task: find the source definition of handleRequest in this checkout. The available tools are listed in the question.\",\n  \"questions\": {\n    \"tool\": {\n      \"type\": \"choice\",\n      \"instructions\": \"Choose the available tool that directly helps with the next step. Use review if none fits or more context is required.\",\n      \"criteria\": {\n        \"repo\": \"Search source files in the current checkout\",\n        \"web\": \"Look up public documentation on the internet\",\n        \"tests\": \"Run the existing automated tests\",\n        \"review\": \"No listed tool is suitable, or the task is ambiguous\"\n      }\n    }\n  }\n}",

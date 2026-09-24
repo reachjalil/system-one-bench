@@ -12,7 +12,7 @@ Keep paths, document IDs and retrieval order. Remove exact duplicates and enforc
 
 ## Score a few passages at a time
 
-Open Keep useful context in Library. Supply the task and candidate text. For an MCP client, fetch context-relevance with sysone_patterns and evaluate it with sysone_decide.
+Open Keep useful context in Library. Supply the task and candidate text. For the hosted MCP, run context-relevance with sysone_run and the passages you supply. The JSON below is a custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup.
 
 For several passages, give each a stable ID and its own question in one request. The current Engine accepts at most eight questions. The published 30-passage study is evidence for an experiment, not a result reproduced by this smaller recipe.
 

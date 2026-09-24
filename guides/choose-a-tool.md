@@ -12,7 +12,7 @@ Filter out unavailable or unauthorized tools before creating the question. If th
 
 ## Include a way to decline the choice
 
-Open Choose the next tool in Library. An agent can retrieve next-tool with sysone_patterns and evaluate it with sysone_decide.
+Open Choose the next tool in Library. For the hosted MCP, run next-tool with sysone_run and the available choices. The JSON below is a custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup.
 
 Use IDs the caller already knows. Describe what each tool does and add a review option. The example chooses a tool category, not a command or its arguments.
 

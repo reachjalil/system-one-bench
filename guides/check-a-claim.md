@@ -14,7 +14,7 @@ Parse exit codes, test counts and HTTP status codes directly when those fields s
 
 Start System One with npx sysone. Add your Vercel AI Gateway key in Settings. In Library, open Check a claim, replace the example and run it.
 
-For an agent, fetch the evidence-check recipe with sysone_patterns and send the edited input to sysone_decide. This example is a valid decide request. It is a teaching example, not a new benchmark.
+For the hosted MCP, run evidence-check with sysone_run and your evidence. The JSON below is an equivalent custom sysone_decide request. The current public stdio bridge still offers sysone_patterns for lookup. This is a teaching example, not a new benchmark.
 
 ```json
 {
